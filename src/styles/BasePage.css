@@ -1,0 +1,20 @@
+
+.BasePage-Container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(112, 86, 59);
+    font-size: 1.2rem;
+    color: white;
+    font-family: Pangea Text,Helvetica,Arial,sans-serif;
+    font-size: 24px;
+
+}
+
+.BasePage-Main{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
