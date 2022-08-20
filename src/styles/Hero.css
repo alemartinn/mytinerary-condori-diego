@@ -1,6 +1,6 @@
 .Hero-Container{
     background-image: url(https://img.freepik.com/foto-gratis/brujula-cerca-mapas-antiguos_23-2147793492.jpg?w=1380&t=st=1660864115~exp=1660864715~hmac=96b076949c06dfa159de84579283575e50d37db25ed233fe10f5b523d478e261);
-    background-position: 0 47%;
+    background-position: 50% 47%;
     background-size: cover;
     min-height: 100vh;
     display: flex;
