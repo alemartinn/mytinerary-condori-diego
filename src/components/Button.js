@@ -3,17 +3,15 @@ import '../styles/Button.css'
 
 export default function Button() {
   return (
-  <div class="loader">
+  <div className="loader">
     <a href="#" className='Button'>Travel</a>
-    <div class="face">
-      <div class="circle">
+    <div className="face">
+      <div className="circle">
       </div>
     </div>
-    <div class="face">
-      <div class="circle"></div>
+    <div className="face">
+      <div className="circle"></div>
     </div>
-    
   </div>
-
   )
 }
