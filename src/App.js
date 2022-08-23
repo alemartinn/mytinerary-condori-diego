@@ -1,9 +1,9 @@
-import Hero from './pages/Hero';
+import BasePage from './layouts/BasePage';
 
 function App() {
   return (
     <>
-      <Hero/>
+      <BasePage/>
     </>
   );
 }
