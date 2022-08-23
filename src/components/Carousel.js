@@ -7,8 +7,8 @@ function Carousel(props) {
     let limitSlide = (props.slides * range)
     let [start, setStart] = useState(0)
     let [end, setEnd] = useState(start + range)
-    /*let [intervalId, setIntervalId] = useState()
-    let interval = props.interval * 1000*/
+    let [intervalId, setIntervalId] = useState()
+    let interval = props.interval * 1000
     let items = props.data
 
     const section = event =>(
@@ -38,13 +38,13 @@ function Carousel(props) {
         }
     }
         
-    /*useEffect(() => {
+    useEffect(() => {
         let id = setInterval(function (){
             next()
         }, interval)
         setIntervalId(id)
         return() => clearInterval(intervalId);
-    }, [start])*/
+    }, [start])
 
   return (
     
