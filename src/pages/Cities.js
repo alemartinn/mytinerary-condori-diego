@@ -3,9 +3,7 @@ import BasePage from '../layouts/BasePage'
 
 export default function Cities() {
     return (
-        <BasePage>
-            {/* Children */}
-        </BasePage>
+        <p>Cities</p>
     )
   }
   

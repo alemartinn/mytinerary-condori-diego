@@ -12,7 +12,6 @@ export default function Hero() {
         <Button/>
       </div>
       <CityCarousel/>
-      <Footer/>
     </div>
   )
 }
