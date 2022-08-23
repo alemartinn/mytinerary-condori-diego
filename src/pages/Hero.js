@@ -1,6 +1,5 @@
 import Button from '../components/Button'
 import '../styles/Hero.css'
-import Footer from '../components/Footer';
 import CityCarousel from '../components/DataCity';
 
 export default function Hero() {
