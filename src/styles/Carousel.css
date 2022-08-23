@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.Carousel-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Carousel-Arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 27vh;
+    background: rgb(255, 229, 80);
+    border-radius: 0.4em;
+    border: black 0.1em solid;
+}
+.Carousel-TitleSection{
+    font-family:  'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 3.5vh;
+    margin: 0 5px;
+    padding-bottom: 5px;
+}
+.Carousel-event {
+    display: flex;
+    justify-content: center;
+    min-width: 50%;
+    margin: 20px 0;
+}
+.Carousel-title{
+    color: white;
+    font-size: 35px;
+    position: absolute;
+    z-index: 1;
+    padding: 0 45px;
+    background:linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0,0,0,1) 50%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 45px;
+
+}
+.Carousel-img {
+    position: relative;
+    object-fit: cover;
+    width: 90%;
+    height: 42vh;
+    border-radius: 50px;
+}
+.Carousel-Slide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
