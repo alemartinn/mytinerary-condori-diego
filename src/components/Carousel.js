@@ -11,8 +11,8 @@ function Carousel(props) {
     let interval = props.interval * 1000
     let items = props.data
 
-    const section = event =>(
-        <div className='Carousel-event'>
+    const section = (event, index) =>(
+        <div className='Carousel-event' key={index}>
             <h3 className='Carousel-title'>{event.city}</h3>
             <img src={event.img} alt={event.city} className='Carousel-img'/>
         </div>
