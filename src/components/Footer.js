@@ -4,7 +4,7 @@ import { Link as LinkRouter } from 'react-router-dom'
 
 export default function Button() {
   function ScrollTop(){
-    window.scrollTo(0,0)
+    window.scrollTo({top:0, behavior: 'smooth'})
   }
     return (
       <footer>
