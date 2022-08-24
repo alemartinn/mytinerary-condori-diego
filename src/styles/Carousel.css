@@ -16,9 +16,8 @@
     justify-content: center;
     align-items: center;
     width: 27vh;
-    background: rgb(255, 229, 80);
-    border-radius: 0.4em;
-    border: black 0.1em solid;
+    background: #ffe550;
+    border-radius: 50px;
 }
 .Carousel-TitleSection{
     font-family:  'Segoe UI', 'Roboto', 'Oxygen',
@@ -27,6 +26,7 @@
     font-size: 3.5vh;
     margin: 0 5px;
     padding-bottom: 5px;
+    color: black;
 }
 .Carousel-event {
     display: flex;
@@ -57,3 +57,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.Left-arrow {
+    transform: rotate(180deg);
+}
+.Left-arrow, .Right-arrow{
+    cursor: pointer;
+}
+
+div > svg:hover{
+   transform: scale(1.1);
+}
+
