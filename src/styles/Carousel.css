@@ -28,10 +28,18 @@
     padding-bottom: 5px;
     color: black;
 }
+
+.Carousel-Slide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .Carousel-event {
     display: flex;
     justify-content: center;
-    min-width: 50%;
+    width: 50%;
     margin: 20px 0;
 }
 .Carousel-title{
@@ -51,12 +59,6 @@
     height: 42vh;
     border-radius: 50px;
 }
-.Carousel-Slide {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
 
 .Left-arrow {
     transform: rotate(180deg);
@@ -64,8 +66,29 @@
 .Left-arrow, .Right-arrow{
     cursor: pointer;
 }
+.Svg-arrow{
+    width: 45px;
+    stroke: black;
+}
+svg>circle{
+    stroke-width: 3px;
+}
 
-div > svg:hover{
+.Svg-arrow:hover{
    transform: scale(1.1);
 }
 
+@media (max-width: 768px){
+    .Carousel-event{
+        width: 100%;
+        margin: 30px 0;
+    }
+    .Carousel-TitleSection{
+        margin: 0 23px;
+    }
+}
+@media (max-width: 1100px){
+    .Carousel-TitleSection{
+        margin: 0 15px;
+    }
+}
