@@ -1,15 +1,21 @@
 import React from 'react';
-import { Link as LinkRouter } from 'react-router-dom';
+import { useState } from 'react';
 import '../styles/Header.css'
+import NavBar from './Header/NavBar';
+import ButtonNavBar from './Header/ButtonNavBar';
 
 const Header = () => {
+
+    const [mostrarMenu, setMostrarMenu] = useState(false)
+
+    const clickMostrarMenu = () => {
+        setMostrarMenu(!mostrarMenu);
+    }
+
     return (  
         <header>
-            <nav className='HeaderNav'>
-                <LinkRouter to='/'> HOME </LinkRouter>
-                <LinkRouter to='/cities'> CITIES </LinkRouter>
-                <LinkRouter to='/newcities'> NEW CITIES </LinkRouter>
-            </nav>
+            <ButtonNavBar mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu}/>
+            <NavBar className='NavBar' mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu}/>
             <h3 className='HeaderTitle'>
                 <img src='/logoMyTinerary.png' alt='logoMyTinerary'/>
             </h3>
