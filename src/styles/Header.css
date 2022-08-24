@@ -1,5 +1,5 @@
 header{
-    min-height: vh;
+    height: 9vh;
     display: grid;
     grid-template-columns: minmax(min-content, 900px) minmax(200px, 1fr) 70px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -7,29 +7,8 @@ header{
     top: 0;
     z-index: 15;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
-
-.HeaderNav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: rgb(255, 255, 255);
-}
-
-.HeaderNav>a{
-    text-decoration: none;
-}
-
-.HeaderNav>a:visited{
-    color: rgb(255, 255, 255);
-}
-
-.HeaderNav>a:hover{
-    cursor: pointer;
-    color: #ccc;
-}
-
 
 .HeaderTitle{
     display: flex;
@@ -56,7 +35,6 @@ header{
     background-color: rgba(0, 0, 0, 0.35);
 }
 
-
 @media (max-width: 768px) {
 
     header{
@@ -67,10 +45,6 @@ header{
     .HeaderTitle{
         grid-row: 1;
         grid-column: 2;
-    }
-
-    .HeaderNav{
-        display: none;
     }
 
     .HeaderButton{
