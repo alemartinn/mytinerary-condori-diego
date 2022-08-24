@@ -72,26 +72,26 @@
     font-weight: bolder;
    }
 
-   button span {
+   .Arrow-up, .Up {
     display: block;
     transition: all 0.3s ease-in-out;
    }
    
-   button svg {
+   .Arrow-up, .Arrow-svg {
     display: block;
     transform-origin: center;
     transition: transform 0.3s ease-in-out;
    }
    
-   .Arrow-up:hover .svg-wrapper {
+   .Arrow-up:hover, .svg-wrapper {
     animation: fly-1 0.6s ease-in-out infinite alternate;
    }
    
-   .Arrow-up:hover svg {
+   .Arrow-up:hover, .Arrow-svg {
     transform: translateY(-0.3em) rotate(-45deg) scale(1.4);
    }
    
-   .Arrow-up:hover span {
+   .Arrow-up:hover, .Up {
     transform: translateY(-5em);
    }
    
