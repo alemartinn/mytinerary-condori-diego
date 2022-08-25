@@ -86,6 +86,11 @@ svg>circle{
     .Carousel-TitleSection{
         margin: 0 23px;
     }
+    .Carousel-img {
+        width: 70%;
+        height: 42vh;
+        border-radius: 50px;
+    }
 }
 @media (max-width: 1100px){
     .Carousel-TitleSection{
