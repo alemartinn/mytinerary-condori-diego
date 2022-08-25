@@ -10,6 +10,7 @@ import Error404 from '../pages/Error404';
 
 
 const BasePage = () => {
+    
     return (  
         <div className='BasePage-Container'>
             <Header/>
