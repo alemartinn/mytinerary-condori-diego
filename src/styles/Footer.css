@@ -51,7 +51,6 @@
 }
 
 .Arrow-up {
-    position: absolute;
     right: 40px;
     display: flex;
     flex-direction: column;
@@ -108,15 +107,18 @@
      transform: translateY(-0.1em);
     }
    }
-
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .Footer{
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
-    .Arrow-up{
-        bottom: 180px;
-        right: 20px;
+
+}
+@media (max-width: 800px) {
+    .Footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
