@@ -1,5 +1,4 @@
 
-/*HeaderNav*/
 .HeaderNav{
     display: flex;
     flex-direction: row;
@@ -42,15 +41,7 @@
         text-align: center;
     }
     
-    /* .HeaderNav>a:hover{
+    .HeaderNav>a:hover{
         background-color: rgba(0, 0, 0, 0.5);
-    } */
-
-    /* @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-        .HeaderNav {
-          background-color: rgba(0, 0, 0, .5);
-          -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
-        }
-    } */
+    }
 }
