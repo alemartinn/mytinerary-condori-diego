@@ -51,7 +51,7 @@ function Carousel(props) {
     <div className='Carousel-container'>
         <div className='Carousel-Arrow'>
             <Arrow icon={leftArrow} click={previous} />
-            <h3 className='Carousel-TitleSection'>{props.text}</h3>
+            <h4 className='Carousel-TitleSection'>{props.text}</h4>
             <Arrow icon={rightArrow} click={next} />
         </div>
         <div className='Carousel-Slide'>
