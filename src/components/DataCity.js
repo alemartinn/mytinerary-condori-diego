@@ -17,7 +17,7 @@ function CityCarousel(){
     ]
 
     return(
-        <Carousel data={cities} range={4} text='Itinerary' slides={3} interval={5}/>
+        <Carousel data={cities} range={4} text='Popular MYtineraries' slides={3} interval={5}/>
     )
 }
 
