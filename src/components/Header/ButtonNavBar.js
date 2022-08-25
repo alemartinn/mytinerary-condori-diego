@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../styles/Header/ButtonNavBar.css'
 
-const ButtonNavBar = ({mostrarMenu, clickMostrarMenu}) => {
+const ButtonNavBar = ({mostrarMenu, clickMostrarMenu, cerrarUserMenuNav}) => {
     return (  
         !mostrarMenu ? 
-        <button onClick={clickMostrarMenu} className='buttonNavBar'>
+        <button onClick={() => {clickMostrarMenu(); cerrarUserMenuNav()}} className='buttonNavBar'>
             <svg viewBox="0 0 100 80" width="30" height="30" fill="#fff">
                 <rect width="90" height="10" />
                 <rect y="30" width="90" height="10" />
