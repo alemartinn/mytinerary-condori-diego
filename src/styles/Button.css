@@ -2,7 +2,7 @@
     padding: 17px 40px;
     border-radius: 50px;
     border: 0;
-    background-color: rgb(255, 229, 80);
+    background-color: #ffe550;
     box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -32,6 +32,7 @@
 
    /* Circle */
 .loader {
+  margin-top: 10px;
     width:  22em;
     height: 22em;
     font-size: 10px;

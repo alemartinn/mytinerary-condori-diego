@@ -30,7 +30,7 @@
         grid-template-columns: 1fr;
         position: fixed;
         width: 100%;
-        top: 9vh;
+        top: 60px;
         z-index: 15;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);

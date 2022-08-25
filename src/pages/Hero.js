@@ -7,7 +7,8 @@ export default function Hero() {
     <div className='Hero-Container'>
       <div className='Hero-Title-button'>
         <h1>MyTinerary</h1>
-        <h2>If you think adventure is dangerous, try routine.It's mortal</h2>
+        <div><h2>If you think adventure is dangerous, try routine.</h2>
+        <h2>It's mortal</h2></div>
         <Button/>
       </div>
       <CityCarousel/>
