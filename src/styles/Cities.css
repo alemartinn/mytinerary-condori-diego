@@ -1,0 +1,36 @@
+
+.citiesContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    margin: 10vh 0;
+}
+
+.cityCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    max-width: 900px;
+    padding: 3vh;
+}
+
+.cityCard>h3{
+    background-color: rgba(0,0,0,0.5);
+    width: 90%;
+    text-align: center;
+    text-shadow: 0px 0px 4px #000;
+    border-radius: 50px 50px 0 0;
+    padding: 3px 0;
+}
+
+.city-img {
+    position: relative;
+    object-fit: cover;
+    width: 90%;
+    height: 42vh;
+    border-radius: 0 0 50px 50px;
+}
