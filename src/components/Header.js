@@ -7,33 +7,32 @@ import UserMenu from './Header/UserMenu';
 
 const Header = () => {
 
-    const [mostrarMenu, setMostrarMenu] = useState(false);
-    const [mostrarUserMenu, setMostrarUserMenu] = useState(false);
+    const [showNavMenu, setShowNavMenu] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
 
-    const clickMostrarMenu = () => {
-        setMostrarMenu(!mostrarMenu);
+    const clickShowNavMenu = () => {
+        setShowNavMenu(!showNavMenu);
     }
-    
-    const cerrarMenuNav = () => {
-        setMostrarMenu(false);
+    const closeMenuNav = () => {
+        setShowNavMenu(false);
     }
 
-    const clickMostrarUserMenu = () => {
-        setMostrarUserMenu(!mostrarUserMenu);
+    const clickShowUserMenu = () => {
+        setShowUserMenu(!showUserMenu);
     }
-    const cerrarUserMenuNav = () => {
-        setMostrarUserMenu(false);
+    const closeUserMenuNav = () => {
+        setShowUserMenu(false);
     }
 
     return (  
         <header>
-            <ButtonNavBar mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu} cerrarUserMenuNav={cerrarUserMenuNav}/>
-            <NavBar className='NavBar' mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu}/>
+            <ButtonNavBar showNavMenu={showNavMenu} clickShowNavMenu={clickShowNavMenu} closeUserMenuNav={closeUserMenuNav}/>
+            <NavBar className='NavBar' showNavMenu={showNavMenu} clickShowNavMenu={clickShowNavMenu}/>
             <h3 className='HeaderTitle'>
                 <img src='/logoMyTinerary.png' alt='logoMyTinerary' className='HeaderLogoImg'/>
             </h3>
-            <UserMenu className='HeaderUserMenu' mostrarUserMenu={mostrarUserMenu} clickMostrarUserMenu={clickMostrarUserMenu}/>
-            <button className='HeaderButton' onClick={() => {cerrarMenuNav(); clickMostrarUserMenu()}}>
+            <UserMenu className='HeaderUserMenu' showUserMenu={showUserMenu} clickShowUserMenu={clickShowUserMenu}/>
+            <button className='HeaderButton' onClick={() => {closeMenuNav(); clickShowUserMenu()}}>
                 <div className="card-client">
                     <div className="user-picture">
                         <svg viewBox="0 0 448 512" fill="white" height= "30"  xmlns="http://www.w3.org/2000/svg">
