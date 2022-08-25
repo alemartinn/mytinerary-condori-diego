@@ -3,27 +3,37 @@ import { useState } from 'react';
 import '../styles/Header.css'
 import NavBar from './Header/NavBar';
 import ButtonNavBar from './Header/ButtonNavBar';
+import UserMenu from './Header/UserMenu';
 
 const Header = () => {
 
-    const [mostrarMenu, setMostrarMenu] = useState(false)
+    const [mostrarMenu, setMostrarMenu] = useState(false);
+    const [mostrarUserMenu, setMostrarUserMenu] = useState(false);
 
     const clickMostrarMenu = () => {
         setMostrarMenu(!mostrarMenu);
     }
     
     const cerrarMenuNav = () => {
-        setMostrarMenu(false)
+        setMostrarMenu(false);
+    }
+
+    const clickMostrarUserMenu = () => {
+        setMostrarUserMenu(!mostrarUserMenu);
+    }
+    const cerrarUserMenuNav = () => {
+        setMostrarUserMenu(false);
     }
 
     return (  
         <header>
-            <ButtonNavBar mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu}/>
+            <ButtonNavBar mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu} cerrarUserMenuNav={cerrarUserMenuNav}/>
             <NavBar className='NavBar' mostrarMenu={mostrarMenu} clickMostrarMenu={clickMostrarMenu}/>
             <h3 className='HeaderTitle'>
                 <img src='/logoMyTinerary.png' alt='logoMyTinerary' className='HeaderLogoImg'/>
             </h3>
-            <button className='HeaderButton' onClick={cerrarMenuNav}>
+            <UserMenu className='HeaderUserMenu' mostrarUserMenu={mostrarUserMenu} clickMostrarUserMenu={clickMostrarUserMenu}/>
+            <button className='HeaderButton' onClick={() => {cerrarMenuNav(); clickMostrarUserMenu()}}>
                 <div className="card-client">
                     <div className="user-picture">
                         <svg viewBox="0 0 448 512" fill="white" height= "30"  xmlns="http://www.w3.org/2000/svg">
