@@ -19,8 +19,8 @@ export default function Button() {
               <LinkRouter to='/cities' className='Footer-link'> Cities </LinkRouter>
               <LinkRouter to='/newcities' className='Footer-link'> NewCities </LinkRouter>
             </nav>
-            <p>{yearNow}</p>
             <p>© Copyright MyTinerary</p>
+            <p>{yearNow}</p>
             <button className='Arrow-up' onClick={ScrollTop}>
               <span className='Up'>UP</span>
               <div className="svg-wrapper-1">
