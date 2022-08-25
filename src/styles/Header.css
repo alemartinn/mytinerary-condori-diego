@@ -1,35 +1,14 @@
 header{
-    min-height: vh;
+    height: 80px;
     display: grid;
-    grid-template-columns: minmax(min-content, 900px) minmax(200px, 1fr) 80px;
+    grid-template-columns: minmax(min-content, 900px) minmax(200px, 1fr) 70px;
     background-color: rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 15;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
-
-.HeaderNav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: rgb(255, 255, 255);
-}
-
-.HeaderNav>a{
-    text-decoration: none;
-}
-
-.HeaderNav>a:visited{
-    color: rgb(255, 255, 255);
-}
-
-.HeaderNav>a:hover{
-    cursor: pointer;
-    color: #ccc;
-}
-
 
 .HeaderTitle{
     display: flex;
@@ -37,8 +16,8 @@ header{
     align-items: center;
 }
 
-.HeaderTitle img{
-    max-height: 9vh;
+.HeaderLogoImg{
+    height: 68px;
 }
 
 .HeaderButton{
@@ -49,10 +28,6 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.HeaderButton>img{
-    height: 4.5vh;
 }
 
 .HeaderButton:hover{
@@ -76,15 +51,15 @@ header{
     header{
         display: grid;
         grid-template-columns: 70px 1fr 70px;
+        height: 60px;
     }
 
     .HeaderTitle{
         grid-row: 1;
         grid-column: 2;
     }
-
-    .HeaderNav{
-        display: none;
+    .HeaderLogoImg{
+        height: 58px;
     }
 
     .HeaderButton{

@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/Button.css'
 import {Link as LinkRouter} from 'react-router-dom'
 
-export default function Button() {
+export default function CallToAction() {
   return (
   <div className="loader">
     <LinkRouter to='/cities' className='Button'> Travel </LinkRouter>

@@ -51,7 +51,6 @@
 }
 
 .Arrow-up {
-    right: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,26 +70,26 @@
     font-weight: bolder;
    }
 
-   .Arrow-up, .Up {
+   button span {
     display: block;
     transition: all 0.3s ease-in-out;
    }
    
-   .Arrow-up, .Arrow-svg {
+   button svg {
     display: block;
     transform-origin: center;
     transition: transform 0.3s ease-in-out;
    }
    
-   .Arrow-up:hover, .svg-wrapper {
+    .svg-wrapper {
     animation: fly-1 0.6s ease-in-out infinite alternate;
    }
    
-   .Arrow-up:hover, .Arrow-svg {
+   .Arrow-up:hover svg {
     transform: translateY(-0.3em) rotate(-45deg) scale(1.4);
    }
    
-   .Arrow-up:hover, .Up {
+   .Arrow-up:hover span {
     transform: translateY(-5em);
    }
    
@@ -113,7 +112,9 @@
         flex-direction: column;
         justify-content: center;
     }
-
+    .Footer-nav{
+        gap: 5px;
+    }
 }
 @media (max-width: 800px) {
     .Footer{
