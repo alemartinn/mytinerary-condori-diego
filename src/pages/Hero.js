@@ -1,4 +1,4 @@
-import Button from '../components/Button'
+import CallToAction from '../components/CallToAction'
 import '../styles/Hero.css'
 import {CityCarousel} from '../components/DataCity';
 
@@ -9,7 +9,7 @@ export default function Hero() {
         <h1>MyTinerary</h1>
         <div className='slogan'><h2>If you think adventure is dangerous, try routine.</h2>
         <h2>It's mortal</h2></div>
-        <Button/>
+        <CallToAction/>
       </div>
       <CityCarousel/>
     </div>
