@@ -1,0 +1,62 @@
+
+.HeaderUserMenu{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    position: fixed;
+    width: 200px;
+    top: 80px;
+    z-index: 15;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: right 0.4s ease-out;
+}
+
+
+.HeaderUserMenu>a:visited{
+    color: rgb(255, 255, 255);
+}
+
+.HeaderUserMenu>a{
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.HeaderUserMenu>a:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) { 
+    .HeaderUserMenu{
+        background-color: rgba(0, 0, 0, 0.5);
+        color: rgb(255, 255, 255);
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        position: fixed;
+        height: auto;
+        width: 180px;
+        top: 60px;
+        z-index: 15;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: right 0.4s ease-out;
+    }
+    
+    .HeaderUserMenu>a:visited{
+        color: rgb(255, 255, 255);
+    }
+
+    .HeaderUserMenu>a{
+        padding: 5px 0;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .HeaderUserMenu>a:hover{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+} 
