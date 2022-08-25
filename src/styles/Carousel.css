@@ -12,10 +12,11 @@
     justify-content: center;
 }
 .Carousel-Arrow{
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 27vh;
+    width: 28vh;
     background: #ffe550;
     border-radius: 50px;
 }
@@ -23,10 +24,10 @@
     font-family:  'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    font-size: 3.5vh;
-    margin: 0 5px;
-    padding-bottom: 5px;
+    text-align: center;
+    font-size: 2.3vh;
     color: black;
+    width: 140px;
 }
 
 .Carousel-Slide {
@@ -67,7 +68,7 @@
     cursor: pointer;
 }
 .Svg-arrow{
-    width: 45px;
+    width: 43px;
     stroke: black;
 }
 svg>circle{
