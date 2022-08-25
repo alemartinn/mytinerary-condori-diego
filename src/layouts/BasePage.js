@@ -21,7 +21,7 @@ const BasePage = () => {
                     <Route path='newcities' element={<NewCity/>}/>
                 </Routes>
             </main>
-            <Footer bck={"none"}/>
+            <Footer/>
         </div>
     );
 }
