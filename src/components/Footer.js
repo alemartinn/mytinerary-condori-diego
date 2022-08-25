@@ -6,6 +6,9 @@ export default function Button() {
   function ScrollTop(){
     window.scrollTo({top:0, behavior: 'smooth'})
   }
+
+  let yearNow = new Date().getFullYear();
+
     return (
       <footer>
         <div className='Footer'>
@@ -16,7 +19,7 @@ export default function Button() {
               <LinkRouter to='/cities' className='Footer-link'> Cities </LinkRouter>
               <LinkRouter to='/newcities' className='Footer-link'> NewCities </LinkRouter>
             </nav>
-            <p>Cohort #32</p>
+            <p>{yearNow}</p>
             <p>© Copyright MyTinerary</p>
             <button className='Arrow-up' onClick={ScrollTop}>
               <span className='Up'>UP</span>
