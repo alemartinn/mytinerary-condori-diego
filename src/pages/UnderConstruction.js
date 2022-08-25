@@ -1,11 +1,8 @@
 import React from 'react';
-import BasePage from '../layouts/BasePage';
 
 const UnderConstruction = () => {
     return (  
-        <BasePage>
-            {/* Children */}
-        </BasePage>
+        <p>Page UnderConstruction</p>
     );
 }
 
