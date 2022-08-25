@@ -112,7 +112,9 @@
         flex-direction: column;
         justify-content: center;
     }
-
+    .Footer-nav{
+        gap: 5px;
+    }
 }
 @media (max-width: 800px) {
     .Footer{
