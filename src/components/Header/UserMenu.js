@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
 import '../../styles/Header/UserMenu.css'
 
-const UserMenu = ({mostrarUserMenu, clickMostrarUserMenu}) => {
+const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
     
     useEffect(() => {
         let headerUserMenu = document.getElementById('HeaderUserMenu')
-        mostrarUserMenu ? headerUserMenu.style.right='0' : headerUserMenu.style.right='-200px'
-    },[mostrarUserMenu])
+        showUserMenu ? headerUserMenu.style.right='0' : headerUserMenu.style.right='-200px'
+    },[showUserMenu])
 
     return (  
         <nav className='HeaderUserMenu' id='HeaderUserMenu'>
-            <LinkRouter to='/login' onClick={clickMostrarUserMenu}> Log In </LinkRouter>
-            <LinkRouter to='/settings' onClick={clickMostrarUserMenu}> Settings </LinkRouter>
-            <LinkRouter to='/help' onClick={clickMostrarUserMenu}> Help </LinkRouter>
+            <LinkRouter to='/login' onClick={clickShowUserMenu}> Log In </LinkRouter>
+            <LinkRouter to='/settings' onClick={clickShowUserMenu}> Settings </LinkRouter>
+            <LinkRouter to='/help' onClick={clickShowUserMenu}> Help </LinkRouter>
         </nav>
     );
 }
