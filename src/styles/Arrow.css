@@ -1,0 +1,11 @@
+.Arrow-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3vw;
+}
+.Arrow-button {
+    background-color: rgba(255, 0, 0, 0);
+    border: 0;
+    font-size: 4vh;
+}

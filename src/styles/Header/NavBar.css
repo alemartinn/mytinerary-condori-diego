@@ -1,0 +1,48 @@
+
+.HeaderNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+
+.HeaderNav>a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.HeaderNav>a:visited{
+    color: rgb(255, 255, 255);
+}
+
+.HeaderNav>a:hover{
+    cursor: pointer;
+    color: #ccc;
+}
+
+
+@media (max-width: 768px) {
+    .HeaderNav{
+        background-color: rgba(0, 0, 0, 0.5);
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        position: fixed;
+        width: 100%;
+        top: 60px;
+        z-index: 15;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: left 0.4s ease-out;
+    }
+
+    .HeaderNav>a{
+        padding: 2.5vh 0;
+        text-align: center;
+    }
+    
+    .HeaderNav>a:hover{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}

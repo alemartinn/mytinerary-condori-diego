@@ -1,0 +1,69 @@
+header{
+    height: 80px;
+    display: grid;
+    grid-template-columns: minmax(min-content, 900px) minmax(200px, 1fr) 70px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    backdrop-filter: blur(4px);
+}
+
+.HeaderTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HeaderLogoImg{
+    height: 68px;
+}
+
+.HeaderButton{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HeaderButton:hover{
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.user-picture {
+    overflow: hidden;
+    object-fit: cover;
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid #ffe550;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+@media (max-width: 768px) {
+
+    header{
+        display: grid;
+        grid-template-columns: 70px 1fr 70px;
+        height: 60px;
+    }
+
+    .HeaderTitle{
+        grid-row: 1;
+        grid-column: 2;
+    }
+    .HeaderLogoImg{
+        height: 58px;
+    }
+
+    .HeaderButton{
+        grid-row: 1;
+        grid-column: 3;
+    }
+}
