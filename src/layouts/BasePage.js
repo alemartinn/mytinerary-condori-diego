@@ -5,7 +5,7 @@ import '../styles/BasePage.css';
 
 
 
-const BasePage = () => {
+const BasePage = (props) => {
     
     return (  
         <div className='BasePage-Container'>
