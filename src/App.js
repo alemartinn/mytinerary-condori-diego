@@ -5,7 +5,7 @@ import Hero from './pages/Hero';
 import Cities from './pages/Cities';
 import NewCity from './pages/NewCity';
 import Error404 from './pages/Error404';
-import Details from './components/Details';
+import UnderConstruction from './pages/UnderConstruction'
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             <Route path='*' element={<Error404/>}/>
             <Route path='/' element={<Hero/>}/>
             <Route path='cities' element={<Cities/>}/>
-            <Route path='cities/:id' element={<Details/>}/>
+            <Route path='cities/:id' element={<UnderConstruction/>}/>
             <Route path='newcities' element={<NewCity/>}/>
         </Routes>
       </BasePage>
