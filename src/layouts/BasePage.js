@@ -3,9 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer'
 import '../styles/BasePage.css';
 
-
-
-const BasePage = () => {
+const BasePage = (props) => {
     
     return (  
         <div className='BasePage-Container'>
