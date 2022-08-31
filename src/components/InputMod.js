@@ -10,6 +10,6 @@ export default function InputMod(props){
     }
 
     return(
-        <input className="Input-one" name={props.name} type={props.type} ref={inputRef} onChange={fnction} required min={`${props.type == 'number' && '1000'}`} max={`${props.type == 'number' && maximum}`} />
+        <input className="Input-one" name={props.name} type={props.type} ref={inputRef} onChange={fnction} required min={`${props.type == 'number' && '1000'}`} max={`${props.type == 'number' && maximum}`} step={`${props.type == 'number' && '1'}`} />
     )
 }
