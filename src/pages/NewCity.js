@@ -9,7 +9,8 @@ export default function NewCity() {
         {name: 'City', type: 'text'},
         {name: 'Country', type: 'text'},
         {name: 'Photo', type: 'text'},
-        {name: 'Population', type: 'number'}
+        {name: 'Population', type: 'number'},
+        {name: 'Fundation', type: 'date'}
     ]
 
     const formRef = React.useRef()
@@ -30,7 +31,10 @@ export default function NewCity() {
             <form className='NewCity-form' onSubmit={submit} ref={formRef}>
                 <h2 className='Title-form'>New City</h2>
                 <div className='Inputs-form'>{formOdel.map(viewForm)}</div>
-                <button className='Submit-form' type='submit'>Send</button>
+                <button className="icon-btn add-btn" type='submit'>
+                    <div className="add-icon"></div>
+                    <div className="btn-txt">Add City</div>
+                </button>
             </form>
         </div>
     )
