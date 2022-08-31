@@ -14,7 +14,7 @@ function Carousel(props) {
     const section = (event, index) =>(
         <div className='Carousel-event' key={index}>
             <h3 className='Carousel-title'>{event.city}</h3>
-            <img src={event.img} alt={event.city} className='Carousel-img'/>
+            <img src={event.photo} alt={event.city} className='Carousel-img'/>
         </div>
     )
 
