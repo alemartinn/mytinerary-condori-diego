@@ -9,8 +9,8 @@ export default function NewCity() {
         {name: 'City', type: 'text'},
         {name: 'Country', type: 'text'},
         {name: 'Photo', type: 'text'},
-        {name: 'Population', type: 'number'},
-        {name: 'Fundation', type: 'date'}
+        {name: 'Population', type: 'number', min: 1000, max:1000000000},
+        {name: 'Fundation', type: 'number', min: 0, max: 2022}
     ]
 
     const formRef = React.useRef()
@@ -20,9 +20,10 @@ export default function NewCity() {
         setValues(Object.fromEntries(form))
     }
 
-    const viewForm = (input) => (
-        <fieldset className='NewCity-fieldset'>
-            <label>{input.name}: <InputMod type={input.type} name={input.name} /></label>
+    const viewForm = (input, i) => (
+
+        <fieldset className='NewCity-fieldset' key={i}>
+            <label htmlFor={input.name}>{input.name}: <InputMod id={input.name} type={input.type} name={input.name} min={`${input.type == 'number' && input.min}`} max={`${input.type == 'number' && input.max}`}/></label>
         </fieldset>
     )
 
