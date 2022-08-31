@@ -1,6 +1,6 @@
 import '../styles/Cities.css'
 
-export default function createCard(props) {
+const CityCard = (props) => {
     return (
         <div className='cityCard' key={props.id}>
             <h3>{props.title}</h3>
@@ -8,3 +8,5 @@ export default function createCard(props) {
         </div>
     )
 }
+ 
+export default CityCard;
