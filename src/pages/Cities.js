@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-// import { cities } from '../components/DataCity'
-import CityCard from '../components/CityCard'
-import '../styles/Cities.css'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import CityCard from '../components/CityCard';
+import '../styles/Cities.css';
+import axios from 'axios';
 
 const Cities = () => {
     
@@ -16,7 +15,7 @@ const Cities = () => {
 
     return (  
         <div className='citiesContainer'>
-            {dataCities.map((city, index) => <CityCard id={city._id} title={city.city} img={city.img} key={index} />)}
+            {dataCities.map((city, index) => <CityCard id={city._id} title={city.city} photo={city.photo} key={index} />)}
         </div>
     );
 }
