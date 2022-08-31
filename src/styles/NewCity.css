@@ -1,0 +1,31 @@
+.NewCity-form{
+    background-color: #0000008e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55vh;
+    border-radius: 50px;
+    padding: 20px 0;
+}
+
+.Title-form{
+    font-variant: small-caps;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+
+.Inputs-form{
+    margin: 10px 0;
+}
+.NewCity-fieldset{
+    width: 50vh;
+    align-self: flex-start;
+    margin-left: 90px;
+    border: none;
+    padding: 20px 0;
+}
+
+.Submit-form{
+    font-size: 25px;
+    width: 50%;
+}
