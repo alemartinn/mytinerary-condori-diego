@@ -1,19 +1,21 @@
-import React from 'react';
-import { cities } from '../components/DataCity';
-import '../styles/Cities.css'
+import React, { useState, useEffect } from 'react';
+import CityCard from '../components/CityCard';
+import '../styles/Cities.css';
+import axios from 'axios';
 
 const Cities = () => {
     
-    const createCards = (city, index) => (
-            <div className='cityCard' key={index}>
-                <h3 >{city.city}</h3>
-                <img src={city.img} alt={city.city} className='city-img'/>
-            </div>
-        )
+    const [dataCities, setCities] = useState([]);
+    
+    useEffect(()=>{
+        axios.get('http://localhost:4000/cities/')
+            .then(response=> setCities(response.data.response))
+            .catch(error => console.log(error))
+    },[])
 
     return (  
         <div className='citiesContainer'>
-            {cities.map(createCards)}
+            {dataCities.map((city, index) => <CityCard id={city._id} title={city.city} photo={city.photo} key={index} />)}
         </div>
     );
 }
