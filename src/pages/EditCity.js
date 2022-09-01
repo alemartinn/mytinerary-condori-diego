@@ -7,9 +7,9 @@ export default function EditCity() {
 
     const [dataCities, setCities] = useState([]);
     const formOdel = [
-        {name: 'Photo', type: 'text'},
-        {name: 'Population', type: 'number', min: 1000, max:1000000000},
-        {name: 'Fundation', type: 'number', min: 0, max: 2022}
+        {name: 'photo', type: 'text'},
+        {name: 'population', type: 'number', min: 1000, max:1000000000},
+        {name: 'fundation', type: 'number', min: 1000, max: 2022}
     ]
 
     useEffect(()=>{
@@ -26,7 +26,7 @@ export default function EditCity() {
 
         <div className='form__group field' key={i}>
             <InputMod className='form__field' id={input.name} type={input.type} name={input.name} min={`${input.type == 'number' && input.min}`} max={`${input.type == 'number' && input.max}`}/>
-            <label className="form__label" for={input.name}>{input.name}</label>  
+            <label className='form__label' htmlFor={input.name}>{input.name}</label>  
         </div>
     )
 
@@ -35,12 +35,13 @@ export default function EditCity() {
         <h2 className='Edit-title'>Choose a City</h2>
         <div className='select-container'>
             <select className='Select' name='cities'>
-            <option selected disabled>--Select City--</option>
+            <option defaultValue>--Select City--</option>
             {dataCities.map(options)}
             </select>
         </div>
         <form className='Edit-form'>
         <div className='Inputs-form'>{formOdel.map(viewForm)}</div>
+        <button type='submit' id="Send">Edit City</button>
         </form>
     </div>
   )
