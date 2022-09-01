@@ -14,6 +14,7 @@ const NavBar = ({showNavMenu, clickShowNavMenu}) => {
             <LinkRouter to='/' onClick={clickShowNavMenu}> HOME </LinkRouter>
             <LinkRouter to='/cities' onClick={clickShowNavMenu}> CITIES </LinkRouter>
             <LinkRouter to='/newcities' onClick={clickShowNavMenu}> NEW CITIES </LinkRouter>
+            <LinkRouter to='/editcity' onClick={clickShowNavMenu}> EDIT CITY </LinkRouter>
         </nav>
     );
 }

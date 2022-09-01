@@ -1,22 +1,32 @@
+.Input-container{
+  width: 70%;
+  min-height: 72vh;
+  display: flex;
+  justify-content: center;
+}
 .NewCity-form{
-    background-color: #00000094;
+    background-color: #00000057;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 55vh;
+    width: 35%;
     border-radius: 50px;
-    padding: 20px 0;
+    margin: 60px 0;
+    box-shadow: -0.2em 1em 0.4em rgba(0, 0, 0, 0.793);}
+.Input-one{
+  font-size: 20px;
 }
-
 .Title-form{
     font-variant: small-caps;
     font-style: italic;
     padding-bottom: 10px;
+    margin-top: 20px;
 }
 
 .Inputs-form{
-    margin: 10px 0;
+    margin: 10px 0 15px 50px;
 }
+
 
 .NewCity-fieldset{
     width: 50vh;
@@ -24,6 +34,7 @@
     margin-left: 90px;
     border: none;
     padding: 20px 0;
+    text-transform: capitalize;
 }
 
 #City{
