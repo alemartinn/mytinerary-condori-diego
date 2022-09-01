@@ -4,7 +4,7 @@ const InputMod = React.forwardRef((props, ref) => {
         
     return(
         <input 
-        className={props.className} 
+        className={props.clase} 
         name={props.name} 
         type={props.type} 
         required 

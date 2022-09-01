@@ -25,7 +25,7 @@ export default function EditCity() {
     const viewForm = (input, i) => (
 
         <div className='form__group field' key={i}>
-            <InputMod className='form__field' id={input.name} type={input.type} name={input.name} min={`${input.type == 'number' && input.min}`} max={`${input.type == 'number' && input.max}`}/>
+            <InputMod clase='form__field' id={input.name} type={input.type} name={input.name} min={`${input.type == 'number' && input.min}`} max={`${input.type == 'number' && input.max}`}/>
             <label className='form__label' htmlFor={input.name}>{input.name}</label>  
         </div>
     )

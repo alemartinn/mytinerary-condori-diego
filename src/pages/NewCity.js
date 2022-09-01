@@ -37,7 +37,7 @@ export default function NewCity() {
         <fieldset className='NewCity-fieldset' key={index}>
             <label htmlFor={elem.name}>{elem.name}: 
                 <InputMod 
-                    className="Input-one" 
+                    clase="Input-one" 
                     name={elem.name} 
                     type={elem.type} 
                     required 
