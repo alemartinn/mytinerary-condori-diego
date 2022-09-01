@@ -1,14 +1,17 @@
-import React, { useRef, useState} from "react";
-import '../styles/InputMod.css'
+import React from "react";
 
-export default function InputMod(props){
-    const inputRef = useRef()
-    const [input, setInput] = useState()
-    const fnction = () => { 
-        setInput(inputRef.current.value)
-    }
-
+const InputMod = React.forwardRef((props, ref) => {
+        
     return(
-        <input className="Input-one" id={props.id} name={props.name} type={props.type} ref={inputRef} onChange={fnction} required min={`${props.type == 'number' && props.min}`} max={`${props.type == 'number' && props.max}`} />
+        <input 
+        className={props.className} 
+        name={props.name} 
+        type={props.type} 
+        required 
+        ref={ref}
+        min={`${props.type === 'number' && props.min}`} 
+        max={`${props.type === 'number' && props.max}`} 
+        />
     )
-}
+});
+export default InputMod
