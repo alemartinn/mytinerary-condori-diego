@@ -14,10 +14,11 @@ export default function NewCity() {
     ]
 
     const formRef = React.useRef()
-    const submit = event => {
+
+    const handleSubmit = event => {
         event.preventDefault()
-        const form = new formOdel(formRef.current)
-        setValues(Object.fromEntries(form))
+        const form = FormData(formRef.current)
+        console.log(form)
     }
 
     const viewForm = (input, i) => (
@@ -29,7 +30,7 @@ export default function NewCity() {
 
     return (
         <div className='Input-container'>
-            <form className='NewCity-form' onSubmit={submit} ref={formRef}>
+            <form className='NewCity-form' onSubmit={handleSubmit} ref={formRef}>
                 <h2 className='Title-form'>New City</h2>
                 <div className='Inputs-form'>{formOdel.map(viewForm)}</div>
                 <button className="icon-btn add-btn" type='submit'>
@@ -40,4 +41,3 @@ export default function NewCity() {
         </div>
     )
   }
-  
