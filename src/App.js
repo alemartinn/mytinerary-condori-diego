@@ -6,6 +6,7 @@ import Cities from './pages/Cities';
 import NewCity from './pages/NewCity';
 import Error404 from './pages/Error404';
 import UnderConstruction from './pages/UnderConstruction'
+import Details from './pages/Details';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='cities' element={<Cities/>}/>
             <Route path='cities/:id' element={<UnderConstruction/>}/>
             <Route path='newcities' element={<NewCity/>}/>
+            <Route path='details/:id' element={<Details/>}/>
         </Routes>
       </BasePage>
     </>
