@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InputMod(props){
+const InputMod = React.forwardRef((props, ref) => {
         
     return(
         <input 
@@ -8,9 +8,10 @@ export default function InputMod(props){
         name={props.name} 
         type={props.type} 
         required 
-        ref={props.ref}
+        ref={ref}
         min={`${props.type === 'number' && props.min}`} 
         max={`${props.type === 'number' && props.max}`} 
         />
     )
-}
+});
+export default InputMod
