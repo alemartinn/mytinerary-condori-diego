@@ -1,23 +1,24 @@
 import React, { useRef, createRef} from 'react';
 import axios from 'axios';
+import InputMod from '../components/InputMod';
 import '../styles/NewCity.css'
 
 export default function NewCity() {
 
-    const formOdel = [
+    const modelForm = [
         {name: 'city', type: 'text'},
         {name: 'country', type: 'text'},
         {name: 'photo', type: 'text'},
         {name: 'population', type: 'number', min: 1000, max:1000000000},
-        {name: 'fundation', type: 'number', min: 0, max: 2022}
+        {name: 'fundation', type: 'number', min: 1000, max: 2022}
     ]
 
     let typeInputs = [];
     let allInputs = useRef([]);
     
     /* Create a ref to each input from form*/
-    formOdel.forEach((element, index) => typeInputs.push(formOdel[index].name))
-    allInputs.current= formOdel.map((el,index) => allInputs.current[index] = createRef());
+    modelForm.forEach((element, index) => typeInputs.push(modelForm[index].name))
+    allInputs.current= modelForm.map((el,index) => allInputs.current[index] = createRef());
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -35,9 +36,8 @@ export default function NewCity() {
 
         <fieldset className='NewCity-fieldset' key={index}>
             <label htmlFor={elem.name}>{elem.name}: 
-                {/* <InputMod id={input.name} ref={inputRef} type={input.type} name={input.name} min={`${input.type == 'number' && input.min}`} max={`${input.type == 'number' && input.max}`}/> */}
-                <input 
-                    className="Input-one" 
+                <InputMod 
+                    clase="Input-one" 
                     name={elem.name} 
                     type={elem.type} 
                     required 
@@ -53,7 +53,7 @@ export default function NewCity() {
         <div className='Input-container'>
             <form className='NewCity-form' onSubmit={handleSubmit}>
                 <h2 className='Title-form'>New City</h2>
-                <div className='Inputs-form'>{formOdel.map(viewForm)}</div>
+                <div className='Inputs-form'>{modelForm.map(viewForm)}</div>
                 <button className="icon-btn add-btn" type='submit'>
                     <div className="add-icon"></div>
                     <div className="btn-txt">Add City</div>
