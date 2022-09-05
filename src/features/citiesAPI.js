@@ -4,14 +4,17 @@ const citiesAPI = createApi({
     reducerPath: "citiesAPI",
 
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:4000'
+        baseUrl: 'http://localhost:4000/'
     }),
     endpoints: (builder) => ({
         getAllCities: builder.query({
-            query: () => `/cities`
+            query: (inputCity) => `/cities/?city=${inputCity}`
+        }),
+        getOneCity: builder.query({
+            query: (id) => `/cities/${id}`
         })
     }),
 })
 
 export default citiesAPI;
-export const {useGetAllCitiesQuery} = citiesAPI;
+export const {useGetAllCitiesQuery, useGetOneCityQuery} = citiesAPI;
