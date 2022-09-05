@@ -1,27 +1,13 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetOneCityQuery } from '../features/citiesAPI';
 
 const DetailsCard = () => {
 
   let {id} = useParams();
-
-  // const [dataCity, setCity] = useState();
-
-  // useEffect(()=>{
-  //     axios.get('http://localhost:4000/cities/?id='+id)
-  //         .then(response=> setCity(response.data.response))
-  //         .catch(error => console.log(error))
-  // },[id])
-
-
   const { 
     data: dataCity, 
-    // error, 
-    // isLoading, 
     isSuccess, 
-    // isFailed 
 } = useGetOneCityQuery(id);
 
   return ( 
