@@ -6,5 +6,7 @@ export default configureStore ({
     reducer: {
         cities: citiesSlices,
         [citiesAPI.reducerPath] : citiesAPI.reducer
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(citiesAPI.middleware)
 })
