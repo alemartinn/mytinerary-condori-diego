@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CityCard from '../components/CityCard';
 import '../styles/Cities.css';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchFromServer } from '../features/citiesSlices';
+import { useGetAllCitiesQuery } from '../features/citiesAPI';
 
 const Cities = () => {
     
@@ -20,13 +19,13 @@ const Cities = () => {
             .catch(error => console.log(error));
     },[inputCity]);
 
-    let citiesRedux = useSelector( state => state.cities.cities);
-    let dispatch = useDispatch();
-    console.log(citiesRedux)
-
-    useEffect(()=>{
-        dispatch(fetchFromServer());
-    },[]);
+    const { 
+        data: cities, 
+        error, 
+        isLoading, 
+        isSuccess, 
+        isFailed 
+    } = useGetAllCitiesQuery();
 
     return (  
         <div className='citiesContainer'>
@@ -38,9 +37,9 @@ const Cities = () => {
                 onChange={(e)=> handleInput(e)}
             />
 
-            {citiesRedux && citiesRedux.length > 0 
+            {cities && cities.length > 0 
             ?   <div className='citiesDataContainer'>
-                    {citiesRedux.map((city, index) => <CityCard id={city._id} title={city.city} photo={city.photo} key={index} />)}
+                    {cities.map((city, index) => <CityCard id={city._id} title={city.city} photo={city.photo} key={index} />)}
                 </div> 
             :   <div className='noCitiesDataContainer'>
                     <p>We couldn't find cities with that name.</p>
