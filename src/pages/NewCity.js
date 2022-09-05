@@ -34,19 +34,19 @@ export default function NewCity() {
 
     const viewForm = (elem, index) => (
 
-        <fieldset className='NewCity-fieldset' key={index}>
-            <label htmlFor={elem.name}>{elem.name}: 
-                <InputMod 
-                    clase="Input-one" 
-                    name={elem.name} 
-                    type={elem.type} 
-                    required 
-                    ref={allInputs.current[index]}
-                    min={`${elem.type === 'number' && elem.min}`} 
-                    max={`${elem.type === 'number' && elem.max}`} 
-                />
-            </label>
-        </fieldset>
+        <div className='form__group field' key={index}>
+            <InputMod 
+                clase='form__field'
+                name={elem.name} 
+                type={elem.type} 
+                required 
+                ref={allInputs.current[index]}
+                min={`${elem.type === 'number' && elem.min}`} 
+                max={`${elem.type === 'number' && elem.max}`} 
+            />
+            <label className='form__label' htmlFor={elem.name}>{elem.name}</label>
+            
+        </div>
     )
 
     return (
