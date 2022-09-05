@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, /*useEffect*/ } from 'react';
 import CityCard from '../components/CityCard';
 import '../styles/Cities.css';
-import axios from 'axios';
+// import axios from 'axios';
 import { useGetAllCitiesQuery } from '../features/citiesAPI';
 
 const Cities = () => {
     
-    const [dataCities, setDataCities] = useState([]);
+    // const [dataCities, setDataCities] = useState([]);
     const [inputCity, setInputCity] = useState('');
 
     const handleInput = (e) => {
         setInputCity(e.target.value);
     }
     
-    useEffect(()=>{
-        axios.get("http://localhost:4000/cities/?city="+inputCity)
-            .then(response=> setDataCities(response.data.response))
-            .catch(error => console.log(error));
-    },[inputCity]);
+    // useEffect(()=>{
+    //     axios.get("http://localhost:4000/cities/?city="+inputCity)
+    //         .then(response=> setDataCities(response.data.response))
+    //         .catch(error => console.log(error));
+    // },[inputCity]);
 
     const { 
         data: cities, 
-        error, 
-        isLoading, 
+        // error, 
+        // isLoading, 
         isSuccess, 
-        isFailed 
-    } = useGetAllCitiesQuery();
-
+        // isFailed 
+    } = useGetAllCitiesQuery(inputCity);
+    
     return (  
         <div className='citiesContainer'>
             <input 
@@ -37,9 +37,9 @@ const Cities = () => {
                 onChange={(e)=> handleInput(e)}
             />
 
-            {cities && cities.length > 0 
+            { isSuccess
             ?   <div className='citiesDataContainer'>
-                    {cities.map((city, index) => <CityCard id={city._id} title={city.city} photo={city.photo} key={index} />)}
+                    {cities.response.map((city, index) => <CityCard id={city._id} title={city.city} photo={city.photo} key={index} />)}
                 </div> 
             :   <div className='noCitiesDataContainer'>
                     <p>We couldn't find cities with that name.</p>
