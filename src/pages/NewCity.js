@@ -36,7 +36,7 @@ export default function NewCity() {
 
         <div className='form__group field' key={index}>
             <InputMod 
-                clase='form__field'
+                className='form__field'
                 name={elem.name} 
                 type={elem.type} 
                 required 
