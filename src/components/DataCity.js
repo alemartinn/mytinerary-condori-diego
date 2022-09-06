@@ -8,7 +8,7 @@ function CityCarousel(){
     const [dataCities, setCities] = useState([]);
     
     useEffect(()=>{
-        axios.get('http://localhost:4000/cities/')
+        axios.get(apiurl+'/cities')
             .then(response=> setCities(response.data.response))
             .catch(error => console.log(error))
     },[])
