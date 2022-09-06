@@ -16,9 +16,14 @@ export const citiesSlice = createSlice({
                 fundation: 1000,
                 __v: 0
             }
-        ]
+        ],
+
+        addCity: (state, action) => {
+            console.log(state,action.payload)
+        }
     }
 })
+export const {addCity} = citiesSlice.actions
 
 export const {fetchFromServer} = citiesSlice.actions
 
