@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import Carousel from "./Carousel";
+import apiurl from "../api";
 
 function CityCarousel(){
 

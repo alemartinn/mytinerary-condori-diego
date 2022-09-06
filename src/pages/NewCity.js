@@ -25,7 +25,7 @@ export default function NewCity() {
         let data = {};
         typeInputs.forEach((element, index) => {data[element] = allInputs.current[index].current.value})
         // console.log(data);
-        axios.post(`http://localhost:4000/cities`, data)
+        axios.post(apiurl+'/cities/', data)
       .then(res => {
         // form.reset();
         console.log(res);

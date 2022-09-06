@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import InputMod from '../components/InputMod';
 import '../styles/EditCity.css';
+import apiurl from "../api";
 
 export default function EditCity() {
 
@@ -18,7 +19,7 @@ export default function EditCity() {
     ]
 
     useEffect(()=>{
-        axios.get('http://localhost:4000/cities/')
+        axios.get(apiurl+'/cities/')
             .then(response=> setCities(response.data.response))
             .catch(error => console.log(error))
     },[])
@@ -47,7 +48,7 @@ export default function EditCity() {
     const editingCity = async (e) => {
         // console.log(e.target.value)
         // console.log(e.target.options[e.target.options.selectedIndex].getAttribute("data_key"))
-        await axios.get('http://localhost:4000/cities/' + e.target.options[e.target.options.selectedIndex].getAttribute("data_key"))
+        await axios.get(apiurl+'/cities/' + e.target.options[e.target.options.selectedIndex].getAttribute("data_key"))
         .then(response => setCityToEdit(response.data.response))
         .catch(error => console.log(error))
     }
