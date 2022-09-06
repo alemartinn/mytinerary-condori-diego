@@ -1,19 +1,26 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React from 'react'
 import Carousel from "./Carousel";
+import {useGetAllCitiesQuery} from '../features/citiesAPI';
 
 function CityCarousel(){
 
-    const [dataCities, setCities] = useState([]);
-    
-    useEffect(()=>{
-        axios.get('http://localhost:4000/cities/')
-            .then(response=> setCities(response.data.response))
-            .catch(error => console.log(error))
-    },[])
+    const { 
+        data: cities,
+        isSuccess
+    } = useGetAllCitiesQuery('');
 
     return(
-        <Carousel data={dataCities} range={4} text='Popular MYtineraries' slides={3} interval={5}/>
+        <>
+            {
+                isSuccess 
+                ?
+                <Carousel data={cities.response} range={4} text='Popular MYtineraries' slides={3} interval={5}/>
+                :
+                <div className='noCitiesDataContainer'>
+                    <p>No images to show.</p>
+                </div>
+            }
+        </>
     )
 }
 

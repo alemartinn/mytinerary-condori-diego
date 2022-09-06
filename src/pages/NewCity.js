@@ -1,6 +1,7 @@
 import React, { useRef, createRef, useState} from 'react';
 import InputMod from '../components/InputMod';
 import '../styles/NewCity.css'
+import apiurl from '../api';
 import { useDispatch } from 'react-redux/es/exports';
 import { addCity } from "../features/citiesSlices";
 
