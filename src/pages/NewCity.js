@@ -2,6 +2,7 @@ import React, { useRef, createRef} from 'react';
 import axios from 'axios';
 import InputMod from '../components/InputMod';
 import '../styles/NewCity.css'
+import apiurl from '../api';
 
 export default function NewCity() {
 
