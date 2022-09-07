@@ -1,9 +1,7 @@
 import React, { useRef, createRef, useState} from 'react';
 import InputMod from '../components/InputMod';
 import '../styles/NewCity.css'
-import apiurl from '../api';
-import { useDispatch } from 'react-redux/es/exports';
-import { addCity } from "../features/citiesSlices";
+import { useAddNewCityMutation } from '../features/citiesAPI';
 
 export default function NewCity() {
 
@@ -54,13 +52,11 @@ export default function NewCity() {
         })
     }
     
-    const dispatch = useDispatch()
+    const [addCity] = useAddNewCityMutation()
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(city)
-        dispatch(addCity(city))
+        addCity(city)
     }
-
 
     return (
         <div className='Input-container'>
