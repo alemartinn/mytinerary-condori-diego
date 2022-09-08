@@ -9,11 +9,6 @@ export default function Itineraries() {
   let {id} = useParams();
   const {data:objetItineraries, isSuccess } = useGetAllItinerariesQuery(id)
 
-  // if(isSuccess){
-  //   console.log(objetItineraries.response)
-  // }
-
-
   return (
     <div className='Itineraries-Container'>
         {isSuccess && objetItineraries.response
