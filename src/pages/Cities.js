@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CityCard from '../components/CityCard';
+import Itinerary from '../components/Itinerary';
 import '../styles/Cities.css';
 import { useGetAllCitiesQuery } from '../features/citiesAPI';
 
