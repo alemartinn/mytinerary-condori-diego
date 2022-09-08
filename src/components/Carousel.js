@@ -1,6 +1,7 @@
 import '../styles/Carousel.css'
 import Arrow from './Carousel/Arrow'
 import {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom';
 
 function Carousel(props) {
     let range = props.range
@@ -12,10 +13,10 @@ function Carousel(props) {
     let items = props.data
 
     const section = (event, index) =>(
-        <div className='Carousel-event' key={index}>
+        <Link to={`/details/${event._id}`} className='Carousel-event' key={index}>
             <h3 className='Carousel-title'>{event.city}</h3>
             <img src={event.photo} alt={event.city} className='Carousel-img'/>
-        </div>
+        </Link>
     )
 
     function previous(){
