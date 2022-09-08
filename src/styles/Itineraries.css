@@ -1,0 +1,13 @@
+.Itineraries-Container{
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 0;
+    gap: 8vh;
+    max-width: 1000px;
+    width: 60vw;
+    min-width: 290px;
+}

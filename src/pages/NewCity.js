@@ -1,8 +1,7 @@
-import React, { useRef, createRef} from 'react';
-import axios from 'axios';
+import React, { useRef, createRef, useState} from 'react';
 import InputMod from '../components/InputMod';
 import '../styles/NewCity.css'
-import apiurl from '../api';
+import { useAddNewCityMutation } from '../features/citiesAPI';
 
 export default function NewCity() {
 
@@ -14,23 +13,8 @@ export default function NewCity() {
         {name: 'fundation', type: 'number', min: 1000, max: 2022}
     ]
 
-    let typeInputs = [];
     let allInputs = useRef([]);
-    
-    /* Create a ref to each input from form*/
-    modelForm.forEach((element, index) => typeInputs.push(modelForm[index].name))
     allInputs.current= modelForm.map((el,index) => allInputs.current[index] = createRef());
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        let data = {};
-        typeInputs.forEach((element, index) => {data[element] = allInputs.current[index].current.value})
-        axios.post(apiurl+'/cities/', data)
-      .then(res => {
-        // form.reset();
-        console.log(res);
-      })
-    }
 
     const viewForm = (elem, index) => (
 
@@ -43,11 +27,36 @@ export default function NewCity() {
                 ref={allInputs.current[index]}
                 min={`${elem.type === 'number' && elem.min}`} 
                 max={`${elem.type === 'number' && elem.max}`} 
+                onChange={handleChange}
             />
             <label className='form__label' htmlFor={elem.name}>{elem.name}</label>
             
         </div>
     )
+
+    const [city, setCity] = useState(
+        {
+            city: "",
+            country: "",
+            photo: "",
+            population: 1000,
+            fundation: 1000,
+        }
+    )
+
+    const handleChange = e => {
+        
+        setCity({
+            ...city,
+            [e.target.name]: e.target.value,
+        })
+    }
+    
+    const [addCity] = useAddNewCityMutation()
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        addCity(city)
+    }
 
     return (
         <div className='Input-container'>
@@ -60,5 +69,6 @@ export default function NewCity() {
                 </button>
             </form>
         </div>
+        
     )
   }
