@@ -1,15 +1,11 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React, {useState, useRef, createRef} from "react";
 import InputMod from '../components/InputMod';
 import '../styles/EditCity.css';
-import apiurl from "../api";
+import { useGetOneCityQuery, useGetAllCitiesQuery, useEditCityMutation } from '../features/citiesAPI'
 
 export default function EditCity() {
 
-    const [dataCities, setCities] = useState([]);
     const [cityToEdit, setCityToEdit] = useState('')
-    const [dateCity, setDateCity] = useState()
-
     const formOdel = [
         {name: 'city', type: 'text'},
         {name: 'country', type: 'text'},
@@ -18,18 +14,46 @@ export default function EditCity() {
         {name: 'fundation', type: 'number', min: 1000, max: 2022}
     ]
 
-    useEffect(()=>{
-        axios.get(apiurl+'/cities/')
-            .then(response=> setCities(response.data.response))
-            .catch(error => console.log(error))
-    },[])
+    const { 
+        data: allCities,
+    } = useGetAllCitiesQuery('');
+
+    const { 
+        data: oneCity,
+        isSuccess: isOneCitySuccess
+    } = useGetOneCityQuery(cityToEdit);
+    
+    const [editCity] = useEditCityMutation();
+
+    let typeInputs = [];
+    let allInputs = useRef([]);
+    allInputs.current= formOdel.map((el,index) => allInputs.current[index] = createRef());
+    
+    /* Create a ref to each input from form*/
+    formOdel.forEach((element, index) => typeInputs.push(formOdel[index].name))
+    allInputs.current= formOdel.map((el,index) => allInputs.current[index] = createRef());
+
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        let data = {};
+        typeInputs.forEach((element, index) => {data[element] = allInputs.current[index].current.value})
+        let obj = {
+            id: oneCity.response._id,
+            city: data
+        }
+        editCity(obj);
+    }
+
+    const editingCity = async (e) => {
+        setCityToEdit(e.target.options[e.target.options.selectedIndex].getAttribute("data_key"))
+    }
 
     const options = (city) => (
         <option className='options' value={city.city} key={city._id} data_key={city._id}>{city.city}</option>
     )
     
     const viewForm = (input, i) => (
-
         <div className='form__group field' key={i}>
             <InputMod 
                 className='form__field' 
@@ -38,46 +62,26 @@ export default function EditCity() {
                 name={input.name} 
                 min={`${input.type === 'number' && input.min}`} 
                 max={`${input.type === 'number' && input.max}`} 
-                // defaultValue={ cityToEdit[input.name] || dateCity || ''}
-                defaultValue={ input.name === 'fundation' ? dateCity : cityToEdit[input.name] || ''}
+                ref={allInputs.current[i]}
+                defaultValue={ input.name === 'fundation' ? [isOneCitySuccess ? new Date(oneCity.response.fundation).getFullYear() : null] : oneCity?.response[input.name] || ''}
             />
             <label className='form__label' htmlFor={input.name}>{input.name}</label>
         </div>
     )
-    
-    const editingCity = async (e) => {
-        // console.log(e.target.value)
-        // console.log(e.target.options[e.target.options.selectedIndex].getAttribute("data_key"))
-        await axios.get(apiurl+'/cities/' + e.target.options[e.target.options.selectedIndex].getAttribute("data_key"))
-        .then(response => setCityToEdit(response.data.response))
-        .catch(error => console.log(error))
-    }
 
-    useEffect(() => {
-        console.log(cityToEdit)
-        if (cityToEdit){
-            let yearNow = new Date(cityToEdit.fundation).getFullYear();
-            // console.log(yearNow)
-            setDateCity(yearNow)
-            // setCityToEdit({...cityToEdit, fundation: yearNow})
-        }
-    } , [cityToEdit])
-
-
-    
   return (
-    <div className='Edit-container'>
-        <h2 className='Edit-title'>Choose a City</h2>
-        <div className='select-container'>
-            <select className='Select' name='cities'onChange={(e) => editingCity(e)} >
-            <option>--Select City--</option>
-            {dataCities.map(options)}
-            </select>
-        </div>
-        <form className='Edit-form'>
-        <div className='Inputs-form'>{formOdel.map(viewForm)}</div>
-        <button type='submit' id="Send">Edit City</button>
-        </form>
-    </div>
+            <div className='Edit-container'>
+                <form className='Edit-form' onSubmit={(e)=>handleSubmit(e)}>
+                <h2 className='Edit-title'>Choose a City</h2>
+                <div className='select-container'>
+                    <select className='Select' name='cities'onChange={(e) => editingCity(e)} >
+                        <option data_key={oneCity?.response._id}>--Select City--</option>
+                        {allCities?.response?.map(options)}
+                    </select>
+                </div>
+                <div className='Inputs-form'>{formOdel.map(viewForm)}</div>
+                <button type='submit' id="Send" >Edit City</button>
+                </form>
+            </div>
   )
 }
