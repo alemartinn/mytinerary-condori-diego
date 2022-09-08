@@ -9,9 +9,9 @@ export default function Itineraries() {
   let {id} = useParams();
   const {data:objetItineraries, isSuccess } = useGetAllItinerariesQuery(id)
 
-  if(isSuccess){
-    console.log(objetItineraries.response)
-  }
+  // if(isSuccess){
+  //   console.log(objetItineraries.response)
+  // }
 
 
   return (
