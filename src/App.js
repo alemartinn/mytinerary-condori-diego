@@ -5,7 +5,10 @@ import Hero from './pages/Hero';
 import Cities from './pages/Cities';
 import NewCity from './pages/NewCity';
 import Error404 from './pages/Error404';
+import EditCity from './pages/EditCity';
 import UnderConstruction from './pages/UnderConstruction'
+import Details from './pages/Details';
+import MyTineraries from './pages/MyTineraries';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
             <Route path='cities' element={<Cities/>}/>
             <Route path='cities/:id' element={<UnderConstruction/>}/>
             <Route path='newcities' element={<NewCity/>}/>
+            <Route path='details/:id' element={<Details/>}/>
+            <Route path='editcity' element={<EditCity/>}/>
+            <Route path='mytineraries' element={<MyTineraries/>}/>
         </Routes>
       </BasePage>
     </>

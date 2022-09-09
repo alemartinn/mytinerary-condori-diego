@@ -1,11 +1,129 @@
-
 .citiesContainer{
+    margin: 10vh 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 5vh;
+    max-width: 1200px;
+    width: 60vw;
+    min-width: 290px;
+    height: 100%;
+}
+
+.noCitiesDataContainer{
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    padding: 2vh;
+    backdrop-filter: blur(3px);
+}
+
+.cityInputFilter{
+    max-width: 700px;
+    width: 60vw;
+    min-width: 290px;
+    font-size: 20px;
+}
+
+/*SEARCH */
+/* removing default style of button */
+
+.form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+}
+ /* styling of whole input container */
+.form {
+    --timing: 0.3s;
+    --width-of-input: 200px;
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: rgba(0, 0, 0, 0.678);
+    --border-color: #ffe550;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg,#fff);
+}
+/* styling of Input */
+.input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+}
+.input::placeholder{
+    color: rgba(255, 255, 255, 0.89);
+}
+/* styling of animated border */
+.form:before {
+    color: white;
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+}
+/* Hover on Input */
+.form:focus-within {
+    border-radius: var(--after-border-radius);
+}
+
+input:focus {
+    outline: none;
+}
+/* here is code of animated border */
+.form:focus-within:before {
+    transform: scale(1);
+}
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+}
+/* close button shown when typing */
+input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+}
+/* sizing svg icons */
+.form svg {
+    width: 17px;
+    margin-top: 3px;
+    color: white;
+}
+
+.citiesDataContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5vh;
-    margin: 10vh 0;
+    margin-top: 10vh 0;
 }
 
 .cityCard{
@@ -25,12 +143,26 @@
     text-shadow: 0px 0px 4px #000;
     border-radius: 50px 50px 0 0;
     padding: 3px 0;
+    max-width: 700px;
+    width: 60vw;
+    min-width: 290px;
 }
 
 .city-img {
     position: relative;
     object-fit: cover;
     width: 90%;
+    max-width: 700px;
+    width: 60vw;
+    min-width: 290px;
     height: 42vh;
     border-radius: 0 0 50px 50px;
+}
+
+@media (min-width: 768px) {
+    
+.noCitiesDataContainer{
+    display: flex;
+    flex-grow: 1;
+}
 }
