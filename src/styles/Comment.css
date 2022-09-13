@@ -123,3 +123,9 @@
     background: #ffffff;
   }
 } 
+
+@media (max-width: 768px){
+  .terminal_body {
+    font-size: 20px;
+  }
+}

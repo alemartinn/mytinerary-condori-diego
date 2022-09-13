@@ -104,10 +104,11 @@
 .Itinerary-NotComment{
     height: 50px;
     padding-top: 20px;
+    display: flex;
+    align-items: center;
 } 
    
 .Itinerary-NotComment span {
-    margin-top: 50px;
     font-size: 22px;
     font-family: cursive, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
