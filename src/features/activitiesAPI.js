@@ -14,4 +14,4 @@ const activitiesAPI =  createApi({
     })
 })
 export default activitiesAPI
-export const { useGetAllActivitiesQuery } = activitiesAPI;
+export const { useGetAllActivitiesQuery} = activitiesAPI;
