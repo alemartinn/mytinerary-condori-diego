@@ -6,17 +6,35 @@
     width: 90%;
 }
 
-.Itinerary-Title{
+.Itinerary-header{
     width: 100%;
-    text-align: center;
-    padding-bottom: 3vh;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    justify-content: center;
+    align-items: center;
 }
 .Itinerary-userContainer{
-    width: 20%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+.Itinerary-userInfo{
+    padding: 20px;
+    text-align: center;
+}
+
+.Itinerary-Title{
+    width: 100%;
+    text-align: center;
+}
+
+.Itinerary-main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .Itinerary-userPhoto{
@@ -25,18 +43,7 @@
     width: 100px;
     border-radius: 50px;
 }
-.Itinerary-userInfo{
-    text-align: center;
-}
 
-.Itinerary-infoContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 80%;
-}
 
 @media (max-width: 768px){
     .Itinerary-userPhoto{
