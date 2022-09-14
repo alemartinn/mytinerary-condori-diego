@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Comments from './Comments';
-import Activities from './Activities'
 import { useGetCommentsQuery } from '../features/commentAPI';
+import Activities from './Activities';
 import '../styles/Itinerary.css';
 
 export default function Itinerary(props) {
@@ -25,25 +25,30 @@ export default function Itinerary(props) {
 
   return (
     <div className='Itinerary-container'>
-        <h2 className='Itinerary-Title'>{itinerary.name}</h2>
-        <div className='Itinerary-userContainer'>
-            <img className='Itinerary-userPhoto' src={itinerary.user.photo} alt='User'/>
+        <div className='Itinerary-header'>
             <div className='Itinerary-userInfo'>
+                <img className='Itinerary-userPhoto' src={itinerary.user.photo} alt='User'/>
                 <p>{itinerary.user.name} {itinerary.user.lastName}</p>
             </div>
+            <div className='Itinerary-userContainer'>
+                <h2 className='Itinerary-username'>{itinerary.name}</h2>
+            </div>
         </div>
-        <div className='Itinerary-infoContainer'>
-            <p>Price: ${itinerary.price}</p>
+        <div className='Itinerary-main'>
+            <p className='Itinerary-price'>Price: ${itinerary.price}</p>
             <Activities id={itinerary._id}/>
-            <button className='Itinerary-button-comment' onClick={handleComment}>
-                <span>Comments</span></button>
         </div>
-
-        {buttonState
-        ? 
-         showComments(data.response)
-        : 
-        null}
+        <section className='Itinerary-comments'>
+            <button className='Itinerary-button-comment' onClick={handleComment}>
+            <span>Comments</span></button>
+            {
+                buttonState
+                ? 
+                showComments(data.response)
+                : 
+                null
+            }
+        </section>
     </div>
   )
 }

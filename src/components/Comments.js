@@ -2,8 +2,8 @@ import React from 'react'
 import '../styles/Comment.css'
 
 export default function Comments(props) {
-    const comment = props.comment
-
+    const comment = props.comment;
+    
   return (
     <div className='Comment-Container'>
         <img className='Comment-img' src={comment.user.photo} alt='User'/>
