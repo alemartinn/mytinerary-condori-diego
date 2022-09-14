@@ -31,21 +31,24 @@ export default function Itinerary(props) {
                 <p>{itinerary.user.name} {itinerary.user.lastName}</p>
             </div>
             <div className='Itinerary-userContainer'>
-                <h2 className='Itinerary-Title'>{itinerary.name}</h2>
+                <h2 className='Itinerary-username'>{itinerary.name}</h2>
             </div>
         </div>
         <div className='Itinerary-main'>
-                <p className='Itinerary-price'>Price: ${itinerary.price}</p>
+            <p className='Itinerary-price'>Price: ${itinerary.price}</p>
             <Activities id={itinerary._id}/>
-            <button className='Itinerary-button-comment' onClick={handleComment}>
-                <span>Comments</span></button>
         </div>
-
-        {buttonState
-        ? 
-         showComments(data.response)
-        : 
-        null}
+        <section className='Itinerary-comments'>
+            <button className='Itinerary-button-comment' onClick={handleComment}>
+            <span>Comments</span></button>
+            {
+                buttonState
+                ? 
+                showComments(data.response)
+                : 
+                null
+            }
+        </section>
     </div>
   )
 }
