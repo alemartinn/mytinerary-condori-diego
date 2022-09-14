@@ -1,32 +1,38 @@
 .Itinerary-container{
+    /* background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px); */
+    /* background-color: rgba(0,0,0,0.85); */
+    background-color: #181414ea;
+    border-radius: 50px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    padding: 5vh;
     min-width: 290px;
-    max-width: 1000px;
-    width: 90%;
+    max-width: 800px;
+    width: 100%;
+    font-family: "Pangea Display,Helvetica,Arial,sans-serif";
 }
 
 .Itinerary-header{
     width: 100%;
     display: grid;
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: 0.4fr 1fr 0.4fr;
     justify-content: center;
     align-items: center;
 }
-.Itinerary-userContainer{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
+
 .Itinerary-userInfo{
-    padding: 20px;
     text-align: center;
 }
 
-.Itinerary-Title{
+.Itinerary-username{
     width: 100%;
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
@@ -38,13 +44,37 @@
     width: 100%;
 }
 
-.Itinerary-userPhoto{
+.Itinerary-userInfo img{
     object-fit: cover;
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     border-radius: 50px;
 }
 
+.Itinerary-userInfo p {
+    font-size: 14px;
+}
+
+.Itinerary-price{
+    width: 100%;
+    text-align: center;
+    padding-top: 5vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.Itinerary-comments{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    width: 100%;
+}
+
+.Itinerary-NotComment{
+    text-align: center;
+    padding: 2vh 0;
+}
 
 .Itinerary-button-comment {
     position: relative;
@@ -58,9 +88,9 @@
     overflow: hidden;
     border: none;
     cursor: pointer;
-   }
-   
-   .Itinerary-button-comment:after {
+}
+
+.Itinerary-button-comment:after {
     content: " ";
     width: 0%;
     height: 100%;
@@ -68,15 +98,15 @@
     position: absolute;
     transition: all 0.4s ease-in-out;
     right: 0;
-   }
+}
    
-   .Itinerary-button-comment:hover::after {
+.Itinerary-button-comment:hover::after {
     right: auto;
     left: 0;
     width: 100%;
-   }
-   
-   .Itinerary-button-comment span {
+}
+
+.Itinerary-button-comment span {
     text-align: center;
     text-decoration: none;
     width: 100%;
@@ -87,34 +117,13 @@
     letter-spacing: 0.1em;
     z-index: 20;
     transition: all 0.3s ease-in-out;
-   }
-   
-   .Itinerary-button-comment:hover span {
+}
+
+.Itinerary-button-comment:hover span {
     color: #183153;
     animation: scaleUp 0.3s ease-in-out;
-   }
-   
-   @keyframes scaleUp {
-    0% {
-     transform: scale(1);
-    }
-   
-    50% {
-     transform: scale(0.95);
-    }
-   
-    100% {
-     transform: scale(1);
-    }
-   }
+}
 
-.Itinerary-NotComment{
-    height: 50px;
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-} 
-   
 .Itinerary-NotComment span {
     font-size: 22px;
     font-family: cursive, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -123,25 +132,53 @@
     line-height: 12px;
     transition: all 0.5s;
     letter-spacing: 0.1em;
-   }
-   
-   @keyframes blur {
-    0%, 90% {
-     filter: blur(0);
-    }
-   
-    50% {
-     filter: blur(10px);
-    }
-   }
+}
 
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes blur {
+    0%, 90% {
+        filter: blur(0);
+    }
+
+    50% {
+        filter: blur(10px);
+    }
+}
 
 @media (max-width: 768px){
-    .Itinerary-userPhoto{
-        width: 50px;
-        height: 50px;
+    
+    .Itinerary-container{
+        padding: 3vh;
+        gap: 3vh;
     }
+
+    .Itinerary-header{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 1.5vh;
+    }
+    
     .Itinerary-userInfo{
         font-size: 15px;
     }
+    
+.Itinerary-userInfo img{
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
 }
