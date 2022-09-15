@@ -1,22 +1,29 @@
 import React, { useEffect, useRef } from 'react';
 import * as jose from 'jose';
+import axios from 'axios';
+import apiurl from '../api';
 
 const SignUpGoogle = () => {
 
     const buttonDiv = useRef(null);
 
     async function handleCredentialResponse(response){
-        console.log(response.credential); //JWT Json Web Token
+        //response.credential is JWT (Json Web Token)
         let userObject = jose.decodeJwt(response.credential); //jose allows decode the response.
-        console.log(userObject);
 
         let data={
             name: userObject.name,
-            photo: userObject.photo,
-            mail: userObject.mail,
-            password: userObject.password,
+            photo: userObject.picture,
+            email: userObject.email,
+            password: userObject.sub,
             role: 'user',
             from: 'google'
+        }
+        console.log(data);
+        try{
+            await axios.post(apiurl+'/auth/signup', data)
+        } catch(error){
+            console.log(error)
         }
         //newUser(data)
     }
