@@ -1,4 +1,4 @@
-import Form from '../components/Form';
+import FormSignUp from '../components/FormSignUp';
 import SignUpGoogle from '../components/SignUpGoogle';
 
 const SignUp = () => {
@@ -15,7 +15,7 @@ const SignUp = () => {
 
     return (  
         <div className='SignUp-container'>
-            <Form role={roleLocal}/>
+            <FormSignUp role={roleLocal}/>
             <SignUpGoogle/>
         </div>
     );
