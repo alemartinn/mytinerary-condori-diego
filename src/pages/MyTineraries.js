@@ -1,11 +1,13 @@
 import React from 'react';
-
+import Itineraries from '../components/Itineraries';
+import { useGetAllItinerariesUserQuery } from '../features/itinerariesAPI';
 
 const MyTineraries = () => {
+    
     return (  
-        <div>
-
-        </div>
+        <>
+            <Itineraries useGetAllItinerariesQuery={useGetAllItinerariesUserQuery}/>
+        </>
     );
 }
  
