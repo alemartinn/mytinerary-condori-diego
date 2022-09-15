@@ -5,7 +5,7 @@ import '../styles/SignUp.css'
 import { useSignUpMutation } from '../features/authAPi';
 
 
-const Form = (props) => {
+const FormSignUp = (props) => {
     const [user, setUser] = useState({
         name: "", lastName: "", email: "", password: "", 
         country:"", role: props.role, from: "form"
@@ -65,4 +65,4 @@ const Form = (props) => {
   )
 }
 
-export default Form;
+export default FormSignUp;
