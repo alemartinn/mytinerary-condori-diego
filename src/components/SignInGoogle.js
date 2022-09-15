@@ -12,16 +12,13 @@ const SignUpGoogle = () => {
         let userObject = jose.decodeJwt(response.credential); //jose allows decode the response.
 
         let data={
-            name: userObject.name,
-            photo: userObject.picture,
             email: userObject.email,
             password: userObject.sub,
-            role: 'user',
             from: 'google'
         }
         console.log(data);
         try{
-            await axios.post(apiurl+'/auth/signup', data)
+            await axios.post(apiurl+'/auth/signin', data)
         } catch(error){
             console.log(error)
         }

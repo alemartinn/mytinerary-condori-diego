@@ -10,6 +10,7 @@ import UnderConstruction from './pages/UnderConstruction'
 import Details from './pages/Details';
 import MyTineraries from './pages/MyTineraries';
 import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 import VerifiedAccount from './pages/VerifiedAccount';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path='*' element={<Error404/>}/>
             <Route path='/' element={<Hero/>}/>
             <Route path='auth/signup' element={<SignUp/>}/>
+            <Route path='auth/signin' element={<SignIn/>}/>
             <Route path='cities' element={<Cities/>}/>
             <Route path='cities/:id' element={<UnderConstruction/>}/>
             <Route path='newcities' element={<NewCity/>}/>
