@@ -10,7 +10,9 @@
     color: #fff;
     font-size: 1.2rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: rgba(0, 0, 0, 0.23);
+    /* background-color: rgba(0, 0, 0, 0.23); */
+    background: linear-gradient(#00000000 0%, #000000 100%);
+
 }
 
 .memberContainer{

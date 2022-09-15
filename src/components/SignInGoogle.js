@@ -33,7 +33,7 @@ const SignUpGoogle = () => {
         });
         google.accounts.id.renderButton(
         buttonDiv.current,
-        { theme: "outline", size: "large" }  // customization attributes
+        { theme: "outline", size: "medium" }  // customization attributes
         );
         //google.accounts.id.prompt();
     },[])
