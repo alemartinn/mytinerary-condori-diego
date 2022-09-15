@@ -13,5 +13,5 @@ export default configureStore ({
         [activitiesAPI.reducerPath] : activitiesAPI.reducer,
         [authAPI.reducerPath] : authAPI.reducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(citiesAPI.middleware).concat(itinerariesAPI.middleware).concat(activitiesAPI.middleware).concat(commentsAPI.middleware).contact (authAPI.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(citiesAPI.middleware).concat(itinerariesAPI.middleware).concat(activitiesAPI.middleware).concat(commentsAPI.middleware).concat(authAPI.middleware)
 })
