@@ -26,7 +26,7 @@ function App() {
             <Route path='newcities' element={<NewCity/>}/>
             <Route path='details/:id' element={<Details/>}/>
             <Route path='editcity' element={<EditCity/>}/>
-            <Route path='mytineraries' element={<MyTineraries/>}/>
+            <Route path='mytineraries/:id' element={<MyTineraries/>}/>
             <Route path='verified-account' element={<VerifiedAccount/>}/>
         </Routes>
       </BasePage>
