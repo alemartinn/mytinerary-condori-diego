@@ -10,6 +10,7 @@ import UnderConstruction from './pages/UnderConstruction'
 import Details from './pages/Details';
 import MyTineraries from './pages/MyTineraries';
 import SignUp from './pages/SignUp';
+import EmailVerified from './pages/EmailVerified';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='details/:id' element={<Details/>}/>
             <Route path='editcity' element={<EditCity/>}/>
             <Route path='mytineraries' element={<MyTineraries/>}/>
+            <Route path='verified-account' element={<EmailVerified/>}/>
         </Routes>
       </BasePage>
     </>
