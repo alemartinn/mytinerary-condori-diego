@@ -1,11 +1,9 @@
 import React from 'react'
 import Itinerary from './Itinerary'
-import { useGetAllItinerariesQuery } from '../features/itinerariesAPI'
 import '../styles/Itineraries.css'
 import { useParams } from "react-router-dom";
 
-
-export default function Itineraries() {
+export default function Itineraries({useGetAllItinerariesQuery}) {
   let {id} = useParams();
   const {data:objetItineraries, isSuccess } = useGetAllItinerariesQuery(id)
 
