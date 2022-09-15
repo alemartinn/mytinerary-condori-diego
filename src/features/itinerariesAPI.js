@@ -8,7 +8,7 @@ const itinerariesAPI =  createApi({
         baseUrl: apiurl
     }),
     endpoints: (builder) => ({
-        getAllItineraries: builder.query({
+        getAllItinerariesCity: builder.query({
             query: (id) => `/itineraries?city=${id}`
         }),
         getAllItinerariesUser: builder.query({
@@ -17,4 +17,4 @@ const itinerariesAPI =  createApi({
     })
 })
 export default itinerariesAPI
-export const {useGetAllItinerariesQuery, useGetAllItinerariesUserQuery} = itinerariesAPI;
+export const {useGetAllItinerariesCityQuery, useGetAllItinerariesUserQuery} = itinerariesAPI;

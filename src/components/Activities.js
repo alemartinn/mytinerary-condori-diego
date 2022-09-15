@@ -10,19 +10,25 @@ const Activities = ({id}) => {
         isSuccess
     } = useGetAllActivitiesQuery(id);
 
-    return (  
+    const showAllActivities = allActivitiesResponse => {
+        return (
         <div className='activitiesContainer'>
-            {
-                isSuccess && allActivities.response
-                ?
-                allActivities.response.map((activt, index)=> <Activity activt={activt} key={index}/>)
-                :
-                
-                <div className='noCitiesDataContainer'>
-                    <p>No comments to show.</p>
-                </div>
-            }
+            {allActivitiesResponse.map((activt, index)=> <Activity activt={activt} key={index}/>)}
         </div>
+        )
+    }
+
+    return (  
+        <>
+            {
+                isSuccess && allActivities.response && allActivities.response.length>0
+                ?
+                // allActivities.response.map((activt, index)=> <Activity activt={activt} key={index}/>)
+                showAllActivities(allActivities.response)
+                :
+                null
+            }
+        </>
     );
 }
  
