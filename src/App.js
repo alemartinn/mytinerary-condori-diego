@@ -12,8 +12,13 @@ import MyTineraries from './pages/MyTineraries';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import VerifiedAccount from './pages/VerifiedAccount';
+import RouteNotUsers from './privatesRoutes/RouteNotUsers';
+import RouteAdmin from './privatesRoutes/RouteAdmin';
+import RouteS1Logged from './privatesRoutes/RouteS1Logged';
+import RouteN1Logged from './privatesRoutes/RouteN1Logged';
 
 function App() {
+  
   return (
     <>
       <ScrollToTop />
@@ -21,15 +26,15 @@ function App() {
         <Routes>
             <Route path='*' element={<Error404/>}/>
             <Route path='/' element={<Hero/>}/>
-            <Route path='auth/signup' element={<SignUp/>}/>
-            <Route path='auth/signin' element={<SignIn/>}/>
+            <Route path='auth/signup' element={<RouteNotUsers> <SignUp/> </RouteNotUsers>}/> 
+            <Route path='auth/signin' element={<RouteN1Logged> <SignIn/> </RouteN1Logged>}/>
             <Route path='cities' element={<Cities/>}/>
             <Route path='cities/:id' element={<UnderConstruction/>}/>
-            <Route path='newcities' element={<NewCity/>}/>
+            <Route path='newcities' element={ <RouteAdmin> <NewCity/> </RouteAdmin> }/>
             <Route path='details/:id' element={<Details/>}/>
-            <Route path='editcity' element={<EditCity/>}/>
-            <Route path='mytineraries/:id' element={<MyTineraries/>}/>
-            <Route path='verified-account' element={<VerifiedAccount/>}/>
+            <Route path='editcity' element={<RouteAdmin> <EditCity/> </RouteAdmin>}/>
+            <Route path='mytineraries/:id' element={<RouteS1Logged> <MyTineraries/> </RouteS1Logged>}/>
+            <Route path='verified-account' element={<RouteS1Logged> <VerifiedAccount/> </RouteS1Logged>}/>
         </Routes>
       </BasePage>
     </>
