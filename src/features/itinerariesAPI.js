@@ -14,7 +14,14 @@ const itinerariesAPI =  createApi({
         getAllItinerariesUser: builder.query({
             query: (id) => `/itineraries?user=${id}`
         }),
+        addNewItinerary: builder.mutation({
+            query:(newItinerary) => ({
+                url:`/itineraries`,
+                method: 'POST',
+                body: newItinerary
+            })
+        }),
     })
 })
 export default itinerariesAPI
-export const {useGetAllItinerariesCityQuery, useGetAllItinerariesUserQuery} = itinerariesAPI;
+export const {useGetAllItinerariesCityQuery, useGetAllItinerariesUserQuery,useAddNewItineraryMutation} = itinerariesAPI;
