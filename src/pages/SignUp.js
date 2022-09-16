@@ -16,7 +16,11 @@ const SignUp = () => {
     return (  
         <div className='SignUp-container'>
             <FormSignUp role={roleLocal}/>
-            <SignUpGoogle/>
+            {roleLocal === "user"?
+                <SignUpGoogle/>
+            :
+            null
+            }
         </div>
     );
 }

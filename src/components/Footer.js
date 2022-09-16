@@ -17,8 +17,6 @@ export default function Button() {
             <nav className='Footer-nav'>
               <LinkRouter to='/' className='Footer-link'> Home </LinkRouter>
               <LinkRouter to='/cities' className='Footer-link'> Cities </LinkRouter>
-              <LinkRouter to='/newcities' className='Footer-link'> NewCities </LinkRouter>
-              <LinkRouter to='/editcity' className='Footer-link'> EditCity</LinkRouter>
             </nav>
             <p>© Copyright MyTinerary</p>
             <p>{yearNow}</p>
