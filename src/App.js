@@ -12,6 +12,7 @@ import MyTineraries from './pages/MyTineraries';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import VerifiedAccount from './pages/VerifiedAccount';
+import NewItinerary from './pages/NewItinerary';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='details/:id' element={<Details/>}/>
             <Route path='editcity' element={<EditCity/>}/>
             <Route path='mytineraries/:id' element={<MyTineraries/>}/>
+            <Route path='newitinerary' element={<NewItinerary/>}/>
             <Route path='verified-account' element={<VerifiedAccount/>}/>
         </Routes>
       </BasePage>
