@@ -26,7 +26,7 @@ const NavBar = ({showNavMenu, clickShowNavMenu}) => {
                 <>
                     <LinkRouter to='/' onClick={clickShowNavMenu}> HOME </LinkRouter>
                     <LinkRouter to='cities' onClick={clickShowNavMenu}> CITIES </LinkRouter>          
-                    <LinkRouter to='mytineraries/:id' onClick={clickShowNavMenu}> MyTINERARY </LinkRouter>    
+                    <LinkRouter to={`mytineraries/${userLocal.id}`} onClick={clickShowNavMenu}> MyTINERARY </LinkRouter>    
                     <LinkRouter to='editcity' onClick={clickShowNavMenu}> EDIT CITY </LinkRouter>
                     <LinkRouter to='newcities' onClick={clickShowNavMenu}> NEW CITY </LinkRouter>
                 </>
@@ -34,7 +34,7 @@ const NavBar = ({showNavMenu, clickShowNavMenu}) => {
                 <>
                     <LinkRouter to='/' onClick={clickShowNavMenu}> HOME </LinkRouter>
                     <LinkRouter to='/cities' onClick={clickShowNavMenu}> CITIES </LinkRouter>
-                    <LinkRouter to='mytineraries/:id' onClick={clickShowNavMenu}> MyTinerary </LinkRouter>
+                    <LinkRouter to={`mytineraries/${userLocal.id}`} onClick={clickShowNavMenu}> MyTINERARY </LinkRouter> 
                 </>
                 }
             </>
