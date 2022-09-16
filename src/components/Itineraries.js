@@ -9,10 +9,13 @@ export default function Itineraries({useGetAllItinerariesQuery}) {
 
   return (
     <div className='Itineraries-Container'>
-        {isSuccess && objetItineraries.response
+        {isSuccess && objetItineraries.response && (objetItineraries.response).length > 0
         ?
         objetItineraries.response.map(itinerary => <Itinerary key={itinerary._id} itinerary={itinerary}/>)
-        :null
+        :
+        <div className='noCitiesDataContainer'>
+            <p>There isn't itineraries to show</p>
+        </div>
         }
     </div>
   )
