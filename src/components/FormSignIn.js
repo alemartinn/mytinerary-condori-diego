@@ -39,7 +39,8 @@ const FormSignIn = () => {
     const [signIn] = useSignInMutation();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await signIn(user);
+        let {data} = await signIn(user);
+        localStorage.setItem("client", JSON.stringify(data.response));
         Navigate("/");
     };
     
