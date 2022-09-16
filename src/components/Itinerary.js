@@ -14,7 +14,7 @@ export default function Itinerary(props) {
 
     const showComments = (dataResponse) => {
         if(dataResponse && dataResponse.length > 0){
-            return dataResponse.map(comment => <Comments key={comment._id} comment={comment} />)
+            return dataResponse.map(comment => <Comments key={comment._id} id={comment._id} user={comment.user} comment={comment} />)
         } else {
             return (
             <h3 className='Itinerary-NotComment'>
