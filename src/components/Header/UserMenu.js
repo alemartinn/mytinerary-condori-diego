@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link as LinkRouter,useNavigate } from 'react-router-dom';
 import { useSignOutMutation } from '../../features/authAPi';
-import '../../styles/Header/UserMenu.css'
+import '../../styles/Header/UserMenu.css';
+import Swal from 'sweetalert2';
 
 const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
     
@@ -25,9 +26,24 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
     const [signOut] = useSignOutMutation()
     let Navigate = useNavigate()
     const signOutUser = async (e) => {
-        await signOut({email :userLocal.email})
-        localStorage.removeItem("client")
+        let {error} =await signOut({email :userLocal.email})
+        
+        if(error){
+            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `You couldn't sign out correctly, please try it again!`
+              })
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: `See you soon ${(JSON.parse(localStorage.getItem('client'))).name} !`,
+                text: `You logged out succesfully.`
+            })
+        }
         clickShowUserMenu()
+        localStorage.removeItem("client")
         Navigate("/")
     }
 

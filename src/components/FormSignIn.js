@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InputMod from './InputMod';
 import '../styles/SignUp.css'
 import { useSignInMutation } from '../features/authAPi';
-
+import Swal from 'sweetalert2';
 
 const FormSignIn = () => {
 
@@ -39,9 +39,23 @@ const FormSignIn = () => {
     const [signIn] = useSignInMutation();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let {data} = await signIn(user);
-        localStorage.setItem("client", JSON.stringify(data.response));
-        Navigate("/");
+        let {data, error} = await signIn(user);
+        if(error){
+            console.log(error)
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.data.message}`
+              })
+        } else {
+            localStorage.setItem("client", JSON.stringify(data.response));
+            await Swal.fire({
+                icon: 'success',
+                title: `Welcome to mytineraries ${data.response.name} !`,
+                text: `You logged succesfully.`
+              })
+            Navigate("/");
+        }
     };
     
   return (
