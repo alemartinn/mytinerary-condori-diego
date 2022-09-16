@@ -2,6 +2,8 @@ import React, { useRef, createRef, useState} from 'react';
 import InputMod from '../components/InputMod';
 import '../styles/NewCity.css'
 import { useAddNewCityMutation } from '../features/citiesAPI';
+import Swal from 'sweetalert2';
+import { Navigate } from 'react-router-dom';
 
 export default function NewCity() {
 
@@ -10,7 +12,7 @@ export default function NewCity() {
         {name: 'country', type: 'text'},
         {name: 'photo', type: 'text'},
         {name: 'population', type: 'number', min: 1000, max:1000000000},
-        {name: 'fundation', type: 'number', min: 1000, max: 2022}
+        {name: 'foundation', type: 'number', min: 1000, max: 2022}
     ]
 
     let allInputs = useRef([]);
@@ -40,7 +42,7 @@ export default function NewCity() {
             country: "",
             photo: "",
             population: 1000,
-            fundation: 1000,
+            foundation: 1000,
         }
     )
 
@@ -53,9 +55,26 @@ export default function NewCity() {
     }
     
     const [addCity] = useAddNewCityMutation()
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        addCity(city)
+        let {data, error} = addCity(city)
+        if(error){
+            console.log(error)
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error}`
+              })
+        } 
+        else {
+            console.log(data)
+            await Swal.fire({
+                icon: 'success',
+                title: `You created a new city!`,
+                text: `Now you can see it in City Pages.`
+            })
+            Navigate("/cities");
+        }
     }
 
     return (

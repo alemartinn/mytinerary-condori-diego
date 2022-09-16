@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InputMod from './InputMod';
 import '../styles/SignUp.css'
 import { useSignUpMutation } from '../features/authAPi';
-
+import Swal from 'sweetalert2';
 
 const FormSignUp = (props) => {
     const [user, setUser] = useState({
@@ -40,8 +40,28 @@ const FormSignUp = (props) => {
     const [signUp] = useSignUpMutation()
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await signUp(user)
-        Navigate("/")
+        let {data, error} = await signUp(user)
+        if(error){
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.data.response.details[0].message}`
+              })
+        } else if (!data.success) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${data.message} with that email`
+              })
+        }
+        else {
+            await Swal.fire({
+                icon: 'success',
+                title: `Welcome to mytineraries ${data.response.name} !`,
+                text: `Now you can sign in with your account.`
+              })
+            Navigate("/");
+        }
     }
 
     let Navigate = useNavigate()
