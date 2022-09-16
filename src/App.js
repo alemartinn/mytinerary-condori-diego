@@ -12,6 +12,7 @@ import MyTineraries from './pages/MyTineraries';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import VerifiedAccount from './pages/VerifiedAccount';
+import NewItinerary from './pages/NewItinerary';
 import RouteNotUsers from './privatesRoutes/RouteNotUsers';
 import RouteAdmin from './privatesRoutes/RouteAdmin';
 import RouteS1Logged from './privatesRoutes/RouteS1Logged';
@@ -34,6 +35,7 @@ function App() {
             <Route path='details/:id' element={<Details/>}/>
             <Route path='editcity' element={<RouteAdmin> <EditCity/> </RouteAdmin>}/>
             <Route path='mytineraries/:id' element={<RouteS1Logged> <MyTineraries/> </RouteS1Logged>}/>
+            <Route path='newitinerary' element={<RouteS1Logged> <NewItinerary/> </RouteS1Logged> }/>
             <Route path='verified-account' element={<RouteS1Logged> <VerifiedAccount/> </RouteS1Logged>}/>
         </Routes>
       </BasePage>
