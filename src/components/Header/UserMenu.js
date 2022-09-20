@@ -44,7 +44,7 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
         }
         clickShowUserMenu()
         localStorage.removeItem("client")
-        Navigate("/")
+        // Navigate("/")
     }
 
     return (  
@@ -55,13 +55,13 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
                 <>
                     <LinkRouter to='/' onClick={clickShowUserMenu}>{name}</LinkRouter>
                     <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> New Admin</LinkRouter>
-                    <LinkRouter to='auth/signup' onClick={signOutUser}> Sign Out</LinkRouter>
+                    <LinkRouter to='/' onClick={signOutUser}> Sign Out</LinkRouter>
                 </>
                 :
                 <>
                     <LinkRouter to='/' onClick={clickShowUserMenu}>{name}</LinkRouter>
                     <LinkRouter to='mytineraries/:id' onClick={clickShowUserMenu}> Mytinerary </LinkRouter>
-                    <LinkRouter to='/help' onClick={signOutUser}> Sign Out </LinkRouter>
+                    <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 }
             </>
