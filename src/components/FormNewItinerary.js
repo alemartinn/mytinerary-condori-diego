@@ -1,20 +1,22 @@
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAddNewCityMutation } from '../features/citiesAPI'
+import { useAddNewItineraryMutation } from '../features/itinerariesAPI'
 import '../styles/FormNewItinerary.css'
 import InputMod from './InputMod'
+import Alert from './Alert'
 
-const FormNewItinerary = () => {
+const FormNewItinerary = (props) => {
+    const client = localStorage.getItem("client")
+    const userLocal = JSON.parse(client)
+    const userId = userLocal.id
     const [itinerary, setItinerary] = useState({
-        name: "", user: "", city: "", price: "", likes: [],
+        name: "", user: userId, city: props.idCity, price: "", likes: [],
         tags:[], duration: ""
     })
 
     const modelForm = [
         {name: 'name', type: 'text'},
-        {name: 'user', type: 'text'},
-        {name: 'city', type: 'text'},
-        {name: 'price', type: 'text'},
+        {name: 'price', type: 'number'},
         {name: 'tags', type: 'text'},
         {name: 'duration', type: 'number'}
     ]
@@ -25,6 +27,7 @@ const FormNewItinerary = () => {
                 className='form__field'
                 name={elem.name} 
                 type={elem.type}
+                required
                 onChange={handleChange}
             />
             <label className='form__label' htmlFor={elem.name}>{elem.name}</label>
@@ -32,18 +35,35 @@ const FormNewItinerary = () => {
     )
 
     const handleChange = e => {
-        setItinerary({
-            ...itinerary, [e.target.name]: e.target.value
-        })
+        if(e.target.name === "tags"){
+            setItinerary({
+                ...itinerary, [e.target.name]: [e.target.value]
+            })
+        } else {
+            setItinerary({
+                ...itinerary, [e.target.name]: e.target.value
+            })
+        }
     }
 
-    const [newItinerary] = useAddNewCityMutation()
+    const [newItinerary] = useAddNewItineraryMutation()
     const Navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await newItinerary(itinerary)
-        Navigate("mytineraries/:id")
+        const {data, error} = await newItinerary(itinerary)
+        if(error){
+            Alert("error",error.data.message)
+        } else {
+            console.log(data);
+            // await Swal.fire({
+            //     icon: 'success',
+            //     title: `Created Itinerary!`,
+            //     text: `You can see it in page`
+            // })
+            Alert("success",data.message)
+            Navigate(-1)
+        }
     }
   return (
     <div className='NewItyn-container'>
