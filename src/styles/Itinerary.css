@@ -9,7 +9,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5vh;
     padding: 5vh;
     min-width: 290px;
     max-width: 800px;
@@ -23,6 +22,7 @@
     grid-template-columns: 0.4fr 1fr 0.4fr;
     justify-content: center;
     align-items: center;
+    padding-bottom: 3vh;
 }
 
 .Itinerary-userInfo{
@@ -36,13 +36,6 @@
     text-align: center;
 }
 
-.Itinerary-main{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
 
 .Itinerary-userInfo img{
     object-fit: cover;
@@ -55,11 +48,83 @@
     font-size: 14px;
 }
 
+.Itinerary-main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 5vh 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
 .Itinerary-price{
     width: 100%;
     text-align: center;
-    padding-top: 5vh;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+.Itinerary-tags{
+    cursor: pointer;
+}
+.Itinerary-tags:hover{
+    text-decoration: underline;
+}
+
+.Itinerary-icons-config{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tooltip-icons-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    border: 0px solid transparent;
+    background: transparent;
+    border-radius: 1.25em;
+    transition: all 0.2s linear;
+    font-size: 16px;
+   }
+
+.tooltip-icons-edit:hover {
+    background-color: rgba(235, 15, 7, 0.11);
+    box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
+        8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+        17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+        36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+        99px 72px 143px rgba(0, 0, 0, 0.08);
+}
+
+.tooltip-icons-edit {
+    position: relative;
+}
+
+.tooltip-icons-edit .tooltiptext {
+    visibility: hidden;
+    width: 4em;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    right: 110%;
+    /* bottom: 90%; */
+}
+
+.tooltip-icons-edit .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
+}
+
+.tooltip-icons-edit:hover .tooltiptext {
+visibility: visible;
 }
 
 .Itinerary-comments{
@@ -165,20 +230,39 @@
         gap: 3vh;
     }
 
-    .Itinerary-header{
+    /* .Itinerary-header{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 1.5vh;
+    } */
+    .Itinerary-header{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        padding-bottom: 0;
+    }
+    .Itinerary-header-firstElem{
+        grid-row: 2;
+    }
+    .Itinerary-header-secondElem{
+        grid-row: 1;
+    }
+    .Itinerary-header-thirdElem{
+        grid-row: 3;
     }
     
     .Itinerary-userInfo{
         font-size: 15px;
     }
     
-.Itinerary-userInfo img{
-    object-fit: cover;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-}
+    .Itinerary-userInfo img{
+        object-fit: cover;
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+    }
+
+    .tooltip-icons-edit{
+        padding: 0.8rem;
+    }
 }
