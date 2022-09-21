@@ -8,7 +8,7 @@ const PatchItineraries = () => {
 
     return (  
         <>
-            <PatchItinerary idCity={id}/>
+            <PatchItinerary idTinerary={id}/>
         </>
     );
 }
