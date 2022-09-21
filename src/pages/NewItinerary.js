@@ -1,12 +1,12 @@
+//import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FormNewItinerary from "../components/FormNewItinerary";
 
 const NewItinerary = () => {
-    let client = localStorage.getItem("client")
-    let userLocal = JSON.parse(client)
-
+    const {id} = useParams()
     return (
         <div>
-            <FormNewItinerary/>
+            <FormNewItinerary idCity={id}/>
         </div>
     )
 }

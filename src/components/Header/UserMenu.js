@@ -53,23 +53,23 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
             <>
                 {(roleLocal === "admin")?
                 <>
-                    <LinkRouter to='/' onClick={clickShowUserMenu}>{name}</LinkRouter>
-                    <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> New Admin</LinkRouter>
-                    <LinkRouter to='/' onClick={signOutUser}> Sign Out</LinkRouter>
+                    <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
+                    <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> New Admin </LinkRouter>
+                    <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 :
                 <>
-                    <LinkRouter to='/' onClick={clickShowUserMenu}>{name}</LinkRouter>
-                    <LinkRouter to='mytineraries/:id' onClick={clickShowUserMenu}> Mytinerary </LinkRouter>
+                    <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
+                    <LinkRouter to='mytineraries/:id' onClick={clickShowUserMenu}> MyTinerary </LinkRouter>
                     <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 }
             </>
             :
             <>
-                <LinkRouter to='/' onClick={clickShowUserMenu}> Hello!</LinkRouter>
+                <LinkRouter to='/' onClick={clickShowUserMenu}><b> Hello! </b></LinkRouter>
                 <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> Sign Up </LinkRouter>
-                <LinkRouter to='auth/signin' onClick={clickShowUserMenu}> Sig In</LinkRouter>
+                <LinkRouter to='auth/signin' onClick={clickShowUserMenu}> Sign In </LinkRouter>
             </>
             }
         </nav>
