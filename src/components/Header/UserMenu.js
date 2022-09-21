@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link as LinkRouter,useNavigate } from 'react-router-dom';
+import { Link as LinkRouter } from 'react-router-dom';
 import { useSignOutMutation } from '../../features/authAPi';
 import '../../styles/Header/UserMenu.css';
 import Swal from 'sweetalert2';
@@ -24,7 +24,6 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
     let name = userLocal?.name
 
     const [signOut] = useSignOutMutation()
-    let Navigate = useNavigate()
     const signOutUser = async (e) => {
         let {error} =await signOut({email :userLocal.email})
         
