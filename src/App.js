@@ -36,8 +36,8 @@ function App() {
             <Route path='details/:id' element={<Details/>}/>
             <Route path='editcity' element={<RouteAdmin> <EditCity/> </RouteAdmin>}/>
             <Route path='mytineraries/:id' element={<RouteS1Logged> <MyTineraries/> </RouteS1Logged>}/>
-            <Route path='newitinerary' element={<RouteS1Logged> <NewItinerary/> </RouteS1Logged> }/>
-            <Route path='patchitineraries/:id' element={<RouteS1Logged> <PatchItineraries/> </RouteS1Logged>} />
+            <Route path='newitinerary/:id' element={<RouteS1Logged> <NewItinerary/> </RouteS1Logged> }/>
+            <Route path='patchitineraries/:id' element={<RouteS1Logged> <PatchItineraries/> </RouteS1Logged>}/>
             <Route path='verified-account' element={<RouteS1Logged> <VerifiedAccount/> </RouteS1Logged>}/>
         </Routes>
       </BasePage>

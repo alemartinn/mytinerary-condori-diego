@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link as LinkRouter,useNavigate } from 'react-router-dom';
+import { Link as LinkRouter } from 'react-router-dom';
 import { useSignOutMutation } from '../../features/authAPi';
 import '../../styles/Header/UserMenu.css';
 import Swal from 'sweetalert2';
@@ -24,7 +24,6 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
     let name = userLocal?.name
 
     const [signOut] = useSignOutMutation()
-    let Navigate = useNavigate()
     const signOutUser = async (e) => {
         let {error} =await signOut({email :userLocal.email})
         
@@ -53,23 +52,23 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
             <>
                 {(roleLocal === "admin")?
                 <>
-                    <LinkRouter to='/' onClick={clickShowUserMenu}>{name}</LinkRouter>
-                    <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> New Admin</LinkRouter>
-                    <LinkRouter to='/' onClick={signOutUser}> Sign Out</LinkRouter>
+                    <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
+                    <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> New Admin </LinkRouter>
+                    <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 :
                 <>
-                    <LinkRouter to='/' onClick={clickShowUserMenu}>{name}</LinkRouter>
-                    <LinkRouter to='mytineraries/:id' onClick={clickShowUserMenu}> Mytinerary </LinkRouter>
+                    <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
+                    <LinkRouter to='mytineraries/:id' onClick={clickShowUserMenu}> MyTinerary </LinkRouter>
                     <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 }
             </>
             :
             <>
-                <LinkRouter to='/' onClick={clickShowUserMenu}> Hello!</LinkRouter>
+                <LinkRouter to='/' onClick={clickShowUserMenu}><b> Hello! </b></LinkRouter>
                 <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> Sign Up </LinkRouter>
-                <LinkRouter to='auth/signin' onClick={clickShowUserMenu}> Sig In</LinkRouter>
+                <LinkRouter to='auth/signin' onClick={clickShowUserMenu}> Sign In </LinkRouter>
             </>
             }
         </nav>
