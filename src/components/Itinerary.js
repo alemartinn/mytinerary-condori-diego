@@ -3,6 +3,7 @@ import Comments from './Comments';
 import { useGetCommentsQuery } from '../features/commentAPI';
 import Activities from './Activities';
 import '../styles/Itinerary.css';
+import { Link as LinkRouter} from 'react-router-dom';
 
 export default function Itinerary(props) {
     const itinerary = props.itinerary
@@ -29,6 +30,7 @@ export default function Itinerary(props) {
             <div className='Itinerary-userInfo'>
                 <img className='Itinerary-userPhoto' src={itinerary.user.photo} alt='User'/>
                 <p>{itinerary.user.name} {itinerary.user.lastName}</p>
+                <LinkRouter to ={`/patchitineraries/${itinerary._id}`}> edit city </LinkRouter>
             </div>
             <div className='Itinerary-userContainer'>
                 <h2 className='Itinerary-username'>{itinerary.name}</h2>
