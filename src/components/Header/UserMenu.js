@@ -59,7 +59,7 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
                 :
                 <>
                     <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
-                    <LinkRouter to='mytineraries/:id' onClick={clickShowUserMenu}> MyTinerary </LinkRouter>
+                    <LinkRouter to={`mytineraries/${userLocal.id}`} onClick={clickShowUserMenu}> MyTinerary </LinkRouter>
                     <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 }

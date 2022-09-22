@@ -41,19 +41,19 @@ const FormSignIn = () => {
         e.preventDefault();
         let {data, error} = await signIn(user);
         if(error){
-            console.log(error)
             await Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: `${error.data.message}`
-              })
+              });
         } else {
-            localStorage.setItem("client", JSON.stringify(data.response));
+            localStorage.setItem("client", JSON.stringify(data.response.user));
+            localStorage.setItem("token", JSON.stringify(data.response.token));
             await Swal.fire({
                 icon: 'success',
-                title: `Welcome to mytineraries ${data.response.name} !`,
+                title: `Welcome to mytineraries ${data.response.user.name} !`,
                 text: `You logged succesfully.`
-              })
+              });
             Navigate("/");
         }
     };

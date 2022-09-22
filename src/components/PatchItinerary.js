@@ -66,7 +66,6 @@ const PatchItinerary = ({idTinerary}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(editItinerary);
         const {data, error} = await updateItinerary({editItinerary: editItinerary, id: idTinerary});
         if(error){
             Alert("error",error.data.message)

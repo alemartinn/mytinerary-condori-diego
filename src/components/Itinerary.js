@@ -51,7 +51,7 @@ export default function Itinerary(props) {
                 <h2 className='Itinerary-username'>{itinerary.name}</h2>
             </div>
             {
-                    loggedIn 
+                    loggedIn && ( ((JSON.parse(loggedIn)).role === "admin") || ((JSON.parse(loggedIn)).id === itinerary.user._id) )
                     ?
                     <div className='Itinerary-icons-config Itinerary-header-thirdElem'>
                         <LinkRouter to ={`/patchitineraries/${itinerary._id}`} className='tooltip-icons-edit Itinerary-icons-edit'>
