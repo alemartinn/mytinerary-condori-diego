@@ -1,24 +1,44 @@
 import React, { useEffect, useRef } from 'react';
 import * as jose from 'jose';
-import axios from 'axios';
-import apiurl from '../api';
+import { useSignInMutation } from '../features/authAPi';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpGoogle = () => {
 
+    const Navigate = useNavigate();
     const buttonDiv = useRef(null);
+    const [signIn] = useSignInMutation();
 
     async function handleCredentialResponse(response){
         //response.credential is JWT (Json Web Token)
         let userObject = jose.decodeJwt(response.credential); //jose allows decode the response.
 
-        let data={
+        let dataFromGoogle={
             email: userObject.email,
             password: userObject.sub,
             from: 'google'
         }
-        console.log(data);
+        
         try{
-            await axios.post(apiurl+'/auth/signin', data)
+            const {data, error} = signIn(dataFromGoogle);
+            if(error){
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.data.message}`
+                  });
+            } else {
+                localStorage.setItem("client", JSON.stringify(data.response.user));
+                localStorage.setItem("token", JSON.stringify(data.response.token));
+                await Swal.fire({
+                    icon: 'success',
+                    title: `Welcome to mytineraries ${data.response.user.name} !`,
+                    text: `You logged succesfully.`
+                  });
+                Navigate("/");
+            }
+
         } catch(error){
             console.log(error)
         }
