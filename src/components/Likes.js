@@ -38,7 +38,7 @@ export default function Likes(props) {
     }
   return (
     <div>
-        <div className='Likeo' onClick={likeItinerary}>
+        <div className='Liked' onClick={likeItinerary}>
             {heartColor? heart("like") : heart("dislike")}{counterLike}
         </div>
     </div>
