@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Comments from './Comments';
+import Comments from './DisplayComments';
 import { useGetCommentsQuery } from '../features/commentAPI';
 import Activities from './Activities';
 import '../styles/Itinerary.css';
