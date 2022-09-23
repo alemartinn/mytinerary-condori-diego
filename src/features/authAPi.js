@@ -34,8 +34,15 @@ export const authAPI = createApi({
                 method: 'PATCH',
                 body: user.editUser
             })
+        }),
+        favorites: builder.mutation({
+            query:(id) => ({
+                url:`/auth/favorites/${id}`,
+                method: 'PATCH',
+                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
+            })
         })
     })
 });
 
-export const {useSignUpMutation, useSignInMutation, useSignOutMutation ,useUpdateUserMutation} = authAPI;
+export const {useSignUpMutation, useSignInMutation, useSignOutMutation ,useUpdateUserMutation, useFavoritesMutation} = authAPI;
