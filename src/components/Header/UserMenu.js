@@ -52,13 +52,13 @@ const UserMenu = ({showUserMenu, clickShowUserMenu}) => {
             <>
                 {(roleLocal === "admin")?
                 <>
-                    <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
+                    <LinkRouter to={`/profile/${userLocal.id}`} onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
                     <LinkRouter to='auth/signup' onClick={clickShowUserMenu}> New Admin </LinkRouter>
                     <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
                 :
                 <>
-                    <LinkRouter to='/' onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
+                    <LinkRouter to={`/profile/${userLocal.id}`} onClick={clickShowUserMenu}><b>{name}</b></LinkRouter>
                     <LinkRouter to={`mytineraries/${userLocal.id}`} onClick={clickShowUserMenu}> MyTinerary </LinkRouter>
                     <LinkRouter to='/' onClick={signOutUser}> Sign Out </LinkRouter>
                 </>
