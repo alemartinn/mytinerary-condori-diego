@@ -12,11 +12,11 @@ const commentsAPI =  createApi({
             query: (id) => `/comments?itinerary=${id}`
         }),
         editComment: builder.mutation({
-            query:(id, comment) => ({
-                url:`/comments/${id}`,
+            query:(obj) => ({
+                url:`/comments/${obj.id}`,
                 method: 'PATCH',
-                body: comment,
-                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
+                body: obj.updateComment,
+                // headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
         deleteComment: builder.mutation({
