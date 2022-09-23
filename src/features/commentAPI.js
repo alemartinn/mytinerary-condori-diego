@@ -20,10 +20,10 @@ const commentsAPI =  createApi({
             })
         }),
         editComment: builder.mutation({
-            query:(editedComment) => ({
-                url:`/comments/${editedComment.id}`,
+            query: ({comment, id}) => ({
+                url: `/comments/${id}`,
                 method: 'PATCH',
-                body: editedComment.comment,
+                body: {comment: comment},
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
