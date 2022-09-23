@@ -48,7 +48,7 @@ const FormSignIn = () => {
               });
         } else {
             localStorage.setItem("client", JSON.stringify(data.response.user));
-            localStorage.setItem("token", JSON.stringify(data.response.token));
+            localStorage.setItem("token", data.response.token);
             await Swal.fire({
                 icon: 'success',
                 title: `Welcome to mytineraries ${data.response.user.name} !`,
