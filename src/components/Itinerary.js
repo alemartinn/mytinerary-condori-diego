@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
-import Comments from './Comments';
+import Comments from './DisplayComments';
 import { useGetCommentsQuery } from '../features/commentAPI';
 import Activities from './Activities';
 import '../styles/Itinerary.css';
-import { Link as LinkRouter} from 'react-router-dom';
+import { Link as LinkRouter } from 'react-router-dom';
 import { useDeleteItineraryMutation } from '../features/itinerariesAPI'
+import Likes from './Likes';
 import Alert from './Alert'
-
 export default function Itinerary(props) {
 
-    const loggedIn = localStorage.getItem('client');
+    const loggedIn = localStorage.getItem('client')
+    const userLocal = JSON.parse(loggedIn)
     const itinerary = props.itinerary;
-    const {data} = useGetCommentsQuery(itinerary._id);
-    const [buttonState, setButtonState] = useState(false);
-    const [deleteItinerary] = useDeleteItineraryMutation();
+    const {data} = useGetCommentsQuery(itinerary._id)
+    const [buttonState, setButtonState] = useState(false)
+    const [deleteItinerary] = useDeleteItineraryMutation()
+    
 
     const handleComment = () => {
         setButtonState(!buttonState);
@@ -49,7 +51,9 @@ export default function Itinerary(props) {
             </div>
             <div className='Itinerary-userContainer Itinerary-header-secondElem'>
                 <h2 className='Itinerary-username'>{itinerary.name}</h2>
+                
             </div>
+            
             {
                     loggedIn && ( ((JSON.parse(loggedIn)).role === "admin") || ((JSON.parse(loggedIn)).id === itinerary.user._id) )
                     ?
@@ -76,6 +80,7 @@ export default function Itinerary(props) {
             <p>Duration: {itinerary.duration} hours</p>
             <Activities id={itinerary._id}/>
             <p className='Itinerary-tags'>{itinerary.tags}</p>
+            <Likes user={userLocal} itinerary= {itinerary}/>
         </div>
         <section className='Itinerary-comments'>
             <button className='Itinerary-button-comment' onClick={handleComment}>
@@ -88,6 +93,8 @@ export default function Itinerary(props) {
                 null
             }
         </section>
+        
+
     </div>
   )
 }

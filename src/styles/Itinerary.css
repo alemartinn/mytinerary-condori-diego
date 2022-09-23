@@ -266,3 +266,20 @@ visibility: visible;
         padding: 0.8rem;
     }
 }
+
+.Liked{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 27px;
+}
+.dislike{
+    color: white;
+    height: 30px;
+}
+.like{
+    color: red;
+    height: 30px;
+}

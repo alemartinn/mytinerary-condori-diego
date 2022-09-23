@@ -20,15 +20,18 @@
 
 .terminal_toolbar {
   display: flex;
-  height: 30px;
   align-items: center;
-  padding: 0 8px;
+  justify-content: space-between;
+  height: 30px;
   box-sizing: border-box;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  padding: 0 5px;
   background: linear-gradient(#504b45 0%, #1e1e1d 100%);
 }
-
+.buttons-name{
+  display: flex;
+}
 .butt {
   display: flex;
   align-items: center;
@@ -73,7 +76,7 @@
 .terminal_body {
   background: rgba(46, 47, 48, 0.9);
   height: calc(100% - 30px);
-  padding: 2px 0 0 5px;
+  padding: 2px 2px 0 5px;
   margin-top: -1px;
   font-size: 30px;
   border-bottom-left-radius: 5px;
@@ -85,8 +88,24 @@
 
 .terminal_promt {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-
+.comment-input{
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  color: white;
+  font-size: 30px;
+}
+.comment-input::placeholder{
+  color: white;
+  font-size: 30px;
+}
+.comment-edit-button{
+  background-color: transparent;
+  border: none;
+}
 .terminal_promt span {
   margin-left: 4px;
 }
@@ -185,6 +204,14 @@
   visibility: visible;
  }
 
+.comment-edit{
+  cursor: pointer;
+
+}
+
+.comment-delete{
+  cursor: pointer;
+}
 
 @media (max-width: 768px){
   .terminal_body {
