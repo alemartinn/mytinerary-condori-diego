@@ -29,11 +29,16 @@ export default function Comments(props) {
 
     const commentValue = useRef()
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        let updateComment = commentValue.current.value
-        console.log({id, updateComment});
-        editComment({id:id, updateComment:updateComment})
+        let editedComment = await commentValue.current.value
+        console.log({id, comment: editedComment});
+        let {data, error} = await editComment({comment: editedComment, id: id});
+        if(data){
+            console.log(data)
+        } else {
+            console.log(error)
+        }
     }
 
   return (
@@ -68,8 +73,8 @@ export default function Comments(props) {
                 <>
                     <form className="terminal_promt" onSubmit={e => handleSubmit(e)}>
                         <div>
-                            <input className='comment-input' type="text" name="comment" required size="30"
-                                placeholder={comment.comment}
+                            <input id={id} className='comment-input' type="text" name="comment" required size="30"
+                                defaultValue={comment.comment}
                                 minLength="3" maxLength="350" ref={commentValue}/>
                         </div>                    
                         <button className='comment-edit-button' type='submit'>
