@@ -4,6 +4,9 @@ import '../styles/Comment.css'
 
 export default function Comments(props) {
 
+    const commentRef = useRef();
+
+    const [editComment] = useEditCommentMutation();
     const comment = props.comment;
     const id = props.id
     const commentUserId = props.user._id
@@ -24,16 +27,10 @@ export default function Comments(props) {
     const deletingComment = () => {
         deleteComment(id)
     }
-    
-    const [editComment] = useEditCommentMutation();
-
-    const commentValue = useRef()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let editedComment = await commentValue.current.value
-        console.log({id, comment: editedComment});
-        let {data, error} = await editComment({comment: editedComment, id: id});
+        const {data, error} = await editComment({comment:commentRef.current.value, id: id});
         if(data){
             console.log(data)
         } else {
@@ -75,7 +72,7 @@ export default function Comments(props) {
                         <div>
                             <input id={id} className='comment-input' type="text" name="comment" required size="30"
                                 defaultValue={comment.comment}
-                                minLength="3" maxLength="350" ref={commentValue}/>
+                                minLength="3" maxLength="350" ref={commentRef}/>
                         </div>                    
                         <button className='comment-edit-button' type='submit'>
                         <svg className="comment-edit" xmlns="http://www.w3.org/2000/svg"  width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffec00" fill="none" strokeLinecap="round" strokeLinejoin="round">
