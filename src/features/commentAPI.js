@@ -11,12 +11,20 @@ const commentsAPI =  createApi({
         getComments: builder.query({
             query: (id) => `/comments?itinerary=${id}`
         }),
+        createComment: builder.mutation({
+            query:(newComment) => ({
+                url:`/comments`,
+                method: 'POST',
+                body: newComment,
+                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
+            })
+        }),
         editComment: builder.mutation({
-            query:(obj) => ({
-                url:`/comments/${obj.id}`,
+            query:(editedComment) => ({
+                url:`/comments/${editedComment.id}`,
                 method: 'PATCH',
-                body: obj.updateComment,
-                // headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
+                body: editedComment.comment,
+                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
         deleteComment: builder.mutation({
@@ -26,14 +34,6 @@ const commentsAPI =  createApi({
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
         }),
-        createComment: builder.mutation({
-            query:(newComment) => ({
-                url:`/comments`,
-                method: 'POST',
-                body: newComment,
-                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
-            })
-        })
     })
 })
 export default commentsAPI
