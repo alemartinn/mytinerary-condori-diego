@@ -33,7 +33,7 @@ export default function Comments(props) {
         e.preventDefault();
         let updateComment = commentValue.current.value
         console.log({id, updateComment});
-        editComment({id, updateComment})
+        editComment({id:id, updateComment:updateComment})
     }
 
   return (
