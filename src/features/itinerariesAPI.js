@@ -37,7 +37,14 @@ const itinerariesAPI =  createApi({
                 method: 'DELETE',
             })
         }),
+        likeDislike: builder.mutation({
+            query:(id) => ({
+                url: `/itineraries/like/${id}`,
+                method: 'PATCH',
+                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
+            })
+        }),
     })
 })
 export default itinerariesAPI
-export const {useGetOneItineraryQuery, useGetAllItinerariesCityQuery, useGetAllItinerariesUserQuery, useAddNewItineraryMutation, useUpdateItineraryMutation, useDeleteItineraryMutation} = itinerariesAPI;
+export const {useGetOneItineraryQuery, useGetAllItinerariesCityQuery, useGetAllItinerariesUserQuery, useAddNewItineraryMutation, useUpdateItineraryMutation, useDeleteItineraryMutation, useLikeDislikeMutation} = itinerariesAPI;
