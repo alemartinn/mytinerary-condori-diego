@@ -1,20 +1,21 @@
 import React from 'react'
 import Itinerary from './Itinerary'
-import { useGetAllItinerariesQuery } from '../features/itinerariesAPI'
 import '../styles/Itineraries.css'
 import { useParams } from "react-router-dom";
 
-
-export default function Itineraries() {
+export default function Itineraries({useGetAllItinerariesQuery}) {
   let {id} = useParams();
   const {data:objetItineraries, isSuccess } = useGetAllItinerariesQuery(id)
 
   return (
     <div className='Itineraries-Container'>
-        {isSuccess && objetItineraries.response
+        {isSuccess && objetItineraries.response && (objetItineraries.response).length > 0
         ?
         objetItineraries.response.map(itinerary => <Itinerary key={itinerary._id} itinerary={itinerary}/>)
-        :null
+        :
+        <div className='noCitiesDataContainer'>
+            <p>There isn't itineraries to show</p>
+        </div>
         }
     </div>
   )
