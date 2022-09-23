@@ -9,9 +9,9 @@ const Header = () => {
 
     const [showNavMenu, setShowNavMenu] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
-    const client = localStorage.getItem("client")
-    const userLocal = JSON.parse(client)
- 
+    const client = localStorage.getItem("client");
+    const userLocal = JSON.parse(client);
+
     const clickShowNavMenu = () => {
         setShowNavMenu(!showNavMenu);
     }

@@ -18,6 +18,7 @@ import RouteAdmin from './privatesRoutes/RouteAdmin';
 import RouteS1Logged from './privatesRoutes/RouteS1Logged';
 import RouteN1Logged from './privatesRoutes/RouteN1Logged';
 import PatchItineraries from './pages/PatchItineraries';
+import Profile from './pages/Profile';
 
 function App() {
   
@@ -39,6 +40,7 @@ function App() {
             <Route path='newitinerary/:id' element={<RouteS1Logged> <NewItinerary/> </RouteS1Logged> }/>
             <Route path='patchitineraries/:id' element={<RouteS1Logged> <PatchItineraries/> </RouteS1Logged>}/>
             <Route path='verified-account' element={<RouteS1Logged> <VerifiedAccount/> </RouteS1Logged>}/>
+            <Route path='profile/:id' element={<RouteS1Logged> <Profile/> </RouteS1Logged>}/>
         </Routes>
       </BasePage>
     </>
