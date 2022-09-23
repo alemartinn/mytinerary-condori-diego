@@ -27,8 +27,15 @@ export const authAPI = createApi({
                 method: 'POST',
                 body: user
             })
+        }),
+        updateUser: builder.mutation({
+            query: (user) => ({
+                url: `/auth/updateuser/${user.idUser}`,
+                method: 'PATCH',
+                body: user.editUser
+            })
         })
     })
 });
 
-export const {useSignUpMutation, useSignInMutation, useSignOutMutation} = authAPI;
+export const {useSignUpMutation, useSignInMutation, useSignOutMutation ,useUpdateUserMutation} = authAPI;
