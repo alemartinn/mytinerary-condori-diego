@@ -11,9 +11,7 @@ const Header = () => {
     const [showUserMenu, setShowUserMenu] = useState(false);
     const client = localStorage.getItem("client")
     const userLocal = JSON.parse(client)
-    if(userLocal){
-        console.log(userLocal.photo);
-    }
+ 
     const clickShowNavMenu = () => {
         setShowNavMenu(!showNavMenu);
     }
