@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InputMod from './InputMod';
 import '../styles/SignUp.css'
 import { useSignUpMutation } from '../features/authAPi';
-import Swal from 'sweetalert2';
+import Alert from './Alert';
 
 const FormSignUp = (props) => {
     const [user, setUser] = useState({
@@ -26,6 +26,7 @@ const FormSignUp = (props) => {
                 name={elem.name} 
                 type={elem.type}
                 onChange={handleChange}
+                autoComplete="on"
             />
             <label className='form__label' htmlFor={elem.name}>{elem.name}</label>
         </div>
@@ -42,24 +43,12 @@ const FormSignUp = (props) => {
         e.preventDefault()
         let {data, error} = await signUp(user)
         if(error){
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${error.data.response.details[0].message}`
-              })
+            Alert("error",error.data.message);
         } else if (!data.success) {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${data.message} with that email`
-              })
+            Alert("error",data.message);
         }
         else {
-            await Swal.fire({
-                icon: 'success',
-                title: `Welcome to mytineraries ${data.response.name} !`,
-                text: `Now you can sign in with your account.`
-              })
+            Alert("success",data.message);
             Navigate("/");
         }
     }
