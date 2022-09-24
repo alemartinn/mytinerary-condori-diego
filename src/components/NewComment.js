@@ -2,25 +2,24 @@ import React, { useRef } from 'react'
 import { useCreateCommentMutation } from '../features/commentAPI'
 import Alert from './Alert'
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux';
 
 
-export default function NewComment(props) {
+export default function NewComment({idItinerary}) {
 
-    const client = localStorage.getItem("client")
-    const userLocal = JSON.parse(client)
-    const idItinerary = props.idItinerary
+    const userRedux = useSelector(state => state.user.u);
     const input = useRef()
     const [createComment] = useCreateCommentMutation()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const {data,error} = await createComment({comment: input.current.value, user:userLocal.id, itinerary: idItinerary})
+        const {data,error} = await createComment({comment: input.current.value, user:userRedux.id, itinerary: idItinerary})
         if(data){
-            let timerInterval
+            let timerInterval;
             Swal.fire({
                 title: 'Writing comment!',
                 html: 'I will close in <b></b> milliseconds.',
-                timer: 2000,
+                timer: 500,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading()
@@ -46,7 +45,7 @@ export default function NewComment(props) {
 
   return (
         <div className='Comment-Container'>
-        <img className='Comment-img' src={userLocal.photo} alt='User'/>
+        <img className='Comment-img' src={userRedux.photo} alt='User'/>
         <div className="container">
             <div className="container_terminal"></div>
             <div className="terminal_toolbar">
@@ -56,7 +55,7 @@ export default function NewComment(props) {
                         <button className="btn"></button>
                         <button className="btn"></button>
                     </div>
-                    <p className="user">{userLocal.name} :</p>
+                    <p className="user">{userRedux.name} :</p>
                 </div>
             </div>
             <div className="terminal_body">

@@ -2,27 +2,14 @@ import React, { useRef } from 'react'
 import { useDeleteCommentMutation, useEditCommentMutation } from '../features/commentAPI';
 import '../styles/Comment.css'
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux';
 
-export default function Comments(props) {
+export default function Comments({comment, id, user}) {
 
+    const userRedux = useSelector(state => state.user.u);
     const commentRef = useRef();
-
     const [editComment] = useEditCommentMutation();
-    const comment = props.comment;
-    const id = props.id
-    const commentUserId = props.user._id
-
-    let client = localStorage.getItem("client")
-    let userLocal = JSON.parse(client)
-    let roleLocal = ""
-    let idUserLocal = ""
-
-    if(userLocal && userLocal.role === "admin") {
-        roleLocal = "admin"
-    } else if(userLocal){
-        roleLocal = "user"
-        idUserLocal = userLocal.id
-    }
+    const commentUserId = user._id;
     
     const [deleteComment] = useDeleteCommentMutation()
     const deletingComment = () => {
@@ -77,7 +64,7 @@ export default function Comments(props) {
                     </div>
                     <p className="user">{comment.user.name} {comment.user.lastName}:</p>
                 </div>
-                {(userLocal && (roleLocal === "admin" || idUserLocal === commentUserId))?
+                {(userRedux && (userRedux.role === "admin" || userRedux.id === commentUserId))?
                 <>                    
                     <svg className="comment-delete" onClick={deletingComment} xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ff2825" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -89,7 +76,7 @@ export default function Comments(props) {
             </div>
 
             <div className="terminal_body">
-                {(userLocal && (roleLocal === "admin" || idUserLocal === commentUserId))?
+                {(userRedux && (userRedux.role === "admin" || userRedux.id === commentUserId))?
                 <>
                     <form className="terminal_promt" onSubmit={e => handleSubmit(e)}>
                         

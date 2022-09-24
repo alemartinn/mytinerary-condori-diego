@@ -8,17 +8,22 @@ import { useDeleteItineraryMutation } from '../features/itinerariesAPI'
 import Likes from './Likes';
 import Alert from './Alert'
 import NewComment from './NewComment';
+import { useSelector } from 'react-redux';
+
 export default function Itinerary(props) {
 
-    const loggedIn = localStorage.getItem('client')
-    const userLocal = JSON.parse(loggedIn)
+    
+    const userRedux = useSelector(state => state.user.u);
+    
+    // const loggedIn = localStorage.getItem('client')
+    // const userLocal = JSON.parse(loggedIn)
+    
     const itinerary = props.itinerary;
     const {data} = useGetCommentsQuery(itinerary._id)
     const [buttonState, setButtonState] = useState(false);
     const [inputState, setInputState] = useState(false);
     const [deleteItinerary] = useDeleteItineraryMutation()
     
-
     const handleComment = () => {
         setButtonState(!buttonState);
     };
@@ -32,7 +37,8 @@ export default function Itinerary(props) {
             return (
                 <div>
                     {dataResponse.map(comment => <Comments key={comment._id} id={comment._id} user={comment.user} comment={comment} />)}
-                    {loggedIn?
+                    { userRedux
+                    ?
                     <section className='Itinerary-Newcomments'>
                         <button className='Itinerary-showInput' onClick={handleNewComment}>
                             <span className='showInput-span'>Add Comment</span>
@@ -48,7 +54,8 @@ export default function Itinerary(props) {
                     <h3 className='Itinerary-NotComment'>
                         <span>T</span><span>h</span><span>e</span><span>r</span><span>e</span><span> </span><span>a</span><span>r</span><span>e</span><span> </span><span>n</span><span>o</span><span> </span><span>c</span><span>o</span><span>m</span><span>m</span><span>e</span><span>n</span><span>t</span><span>s</span>
                     </h3>
-                    {loggedIn?
+                    {userRedux 
+                    ?
                     <section className='Itinerary-Newcomments'>
                         <button className='Itinerary-showInput' onClick={handleNewComment}>
                             <span className='showInput-span'>Add Comment</span>
@@ -83,7 +90,7 @@ export default function Itinerary(props) {
             </div>
             
             {
-                    loggedIn && ( ((JSON.parse(loggedIn)).role === "admin") || ((JSON.parse(loggedIn)).id === itinerary.user._id) )
+                    userRedux && ( (userRedux.role === "admin") || (userRedux.id === itinerary.user._id) )
                     ?
                     <div className='Itinerary-icons-config Itinerary-header-thirdElem'>
                         <LinkRouter to ={`/patchitineraries/${itinerary._id}`} className='tooltip-icons-edit Itinerary-icons-edit'>
@@ -108,7 +115,7 @@ export default function Itinerary(props) {
             <p>Duration: {itinerary.duration} hours</p>
             <Activities id={itinerary._id}/>
             <p className='Itinerary-tags'>{itinerary.tags}</p>
-            <Likes user={userLocal} itinerary= {itinerary}/>
+            <Likes user={userRedux} itinerary= {itinerary}/>
         </div>
         <section className='Itinerary-comments'>
             <button className='Itinerary-button-comment' onClick={handleComment}>
