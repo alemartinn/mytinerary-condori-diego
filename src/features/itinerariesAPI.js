@@ -1,4 +1,4 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import apiurl from '../api';
 
 const itinerariesAPI =  createApi({
@@ -45,6 +45,6 @@ const itinerariesAPI =  createApi({
             })
         }),
     })
-})
-export default itinerariesAPI
+});
+export default itinerariesAPI;
 export const {useGetOneItineraryQuery, useGetAllItinerariesCityQuery, useGetAllItinerariesUserQuery, useAddNewItineraryMutation, useUpdateItineraryMutation, useDeleteItineraryMutation, useLikeDislikeMutation} = itinerariesAPI;

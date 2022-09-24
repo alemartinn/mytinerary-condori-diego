@@ -1,4 +1,4 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import apiurl from '../api';
 
 const activitiesAPI =  createApi({
@@ -12,6 +12,6 @@ const activitiesAPI =  createApi({
             query: (id) => `/activities?itinerary=${id}`
         })
     })
-})
-export default activitiesAPI
+});
+export default activitiesAPI;
 export const { useGetAllActivitiesQuery} = activitiesAPI;

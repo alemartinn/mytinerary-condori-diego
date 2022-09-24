@@ -1,4 +1,4 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import apiurl from "../api";
 
 const commentsAPI =  createApi({
@@ -35,6 +35,6 @@ const commentsAPI =  createApi({
             })
         }),
     })
-})
-export default commentsAPI
-export const {useGetCommentsQuery, useEditCommentMutation, useDeleteCommentMutation, useCreateCommentMutation} = commentsAPI
+});
+export default commentsAPI;
+export const {useGetCommentsQuery, useEditCommentMutation, useDeleteCommentMutation, useCreateCommentMutation} = commentsAPI;

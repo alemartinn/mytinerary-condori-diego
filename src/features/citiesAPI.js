@@ -36,7 +36,7 @@ const citiesAPI = createApi({
             })
         }),
     }),
-})
+});
 
 
 export default citiesAPI;
