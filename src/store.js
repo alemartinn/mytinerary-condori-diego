@@ -4,9 +4,11 @@ import commentsAPI from "./features/commentAPI";
 import itinerariesAPI from "./features/itinerariesAPI";
 import activitiesAPI from "./features/activitiesAPI";
 import { authAPI } from "./features/authAPi";
+import userReducer from "./features/userSlice";
 
 export default configureStore ({
     reducer: {
+        user: userReducer,
         [citiesAPI.reducerPath] : citiesAPI.reducer,
         [itinerariesAPI.reducerPath] : itinerariesAPI.reducer,
         [commentsAPI.reducerPath] : commentsAPI.reducer,
