@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import InputMod from './InputMod';
 import '../styles/SignUp.css'
 import { useSignInMutation } from '../features/authAPi';
-import Swal from 'sweetalert2';
+import Alert from './Alert';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../features/userSlice';
 
 const FormSignIn = () => {
 
+    const dispatch = useDispatch();
     const [user, setUser] = useState({
         email: "", password: "", from: "form"
     });
@@ -25,6 +28,7 @@ const FormSignIn = () => {
                 name={elem.name} 
                 type={elem.type}
                 onChange={handleChange}
+                autoComplete="on"
             />
             <label className='form__label' htmlFor={elem.name}>{elem.name}</label>
         </div>
@@ -41,19 +45,11 @@ const FormSignIn = () => {
         e.preventDefault();
         let {data, error} = await signIn(user);
         if(error){
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${error.data.message}`
-              });
+            Alert("error",error.data.message)
         } else {
-            localStorage.setItem("client", JSON.stringify(data.response.user));
             localStorage.setItem("token", data.response.token);
-            await Swal.fire({
-                icon: 'success',
-                title: `Welcome to mytineraries ${data.response.user.name} !`,
-                text: `You logged succesfully.`
-              });
+            dispatch(addUser(data.response.user));
+            Alert("success",data.message)
             Navigate("/");
         }
     };
