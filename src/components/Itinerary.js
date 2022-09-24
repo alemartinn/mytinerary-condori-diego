@@ -6,7 +6,7 @@ import '../styles/Itinerary.css';
 import { Link as LinkRouter } from 'react-router-dom';
 import { useDeleteItineraryMutation } from '../features/itinerariesAPI'
 import Likes from './Likes';
-import Alert from './Alert'
+import Swal from 'sweetalert2'
 import NewComment from './NewComment';
 import { useSelector } from 'react-redux';
 
@@ -69,12 +69,24 @@ export default function Itinerary(props) {
     };
 
     const confirmDeleteIt = (id) =>{
-        const {error} = deleteItinerary(id);
-        if(error){
-            Alert("error",error.data.message);
-        } else {
-            Alert("success","Your itinerary has been deleted");
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#dd3544',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            deleteItinerary(id)
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+            window.location.reload(false);
+        }})
     }
 
   return (
