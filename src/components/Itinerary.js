@@ -7,28 +7,56 @@ import { Link as LinkRouter } from 'react-router-dom';
 import { useDeleteItineraryMutation } from '../features/itinerariesAPI'
 import Likes from './Likes';
 import Alert from './Alert'
+import NewComment from './NewComment';
 export default function Itinerary(props) {
 
     const loggedIn = localStorage.getItem('client')
     const userLocal = JSON.parse(loggedIn)
     const itinerary = props.itinerary;
     const {data} = useGetCommentsQuery(itinerary._id)
-    const [buttonState, setButtonState] = useState(false)
+    const [buttonState, setButtonState] = useState(false);
+    const [inputState, setInputState] = useState(false);
     const [deleteItinerary] = useDeleteItineraryMutation()
     
 
     const handleComment = () => {
         setButtonState(!buttonState);
     };
+    const handleNewComment = () => {
+        setInputState(!inputState);
+    };
 
     const showComments = (dataResponse) => {
+
         if(dataResponse && dataResponse.length > 0){
-            return dataResponse.map(comment => <Comments key={comment._id} id={comment._id} user={comment.user} comment={comment} />);
+            return (
+                <div>
+                    {dataResponse.map(comment => <Comments key={comment._id} id={comment._id} user={comment.user} comment={comment} />)}
+                    {loggedIn?
+                    <section className='Itinerary-Newcomments'>
+                        <button className='Itinerary-showInput' onClick={handleNewComment}>
+                            <span className='showInput-span'>Add Comment</span>
+                        </button>
+                        {inputState? <NewComment idItinerary={itinerary._id}/> : null}
+                    </section>
+                    :null}
+                </div>
+            )
         } else {
             return (
-                <h3 className='Itinerary-NotComment'>
-                    <span>T</span><span>h</span><span>e</span><span>r</span><span>e</span><span> </span><span>a</span><span>r</span><span>e</span><span> </span><span>n</span><span>o</span><span> </span><span>c</span><span>o</span><span>m</span><span>m</span><span>e</span><span>n</span><span>t</span><span>s</span>
-                </h3>
+                <div>
+                    <h3 className='Itinerary-NotComment'>
+                        <span>T</span><span>h</span><span>e</span><span>r</span><span>e</span><span> </span><span>a</span><span>r</span><span>e</span><span> </span><span>n</span><span>o</span><span> </span><span>c</span><span>o</span><span>m</span><span>m</span><span>e</span><span>n</span><span>t</span><span>s</span>
+                    </h3>
+                    {loggedIn?
+                    <section className='Itinerary-Newcomments'>
+                        <button className='Itinerary-showInput' onClick={handleNewComment}>
+                            <span className='showInput-span'>Add Comment</span>
+                        </button>
+                        {inputState? <NewComment idItinerary={itinerary._id}/> : null}
+                    </section>
+                    :null}           
+                </div>
             );
         }
     };
