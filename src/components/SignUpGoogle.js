@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as jose from 'jose';
 import { useSignUpMutation } from '../features/authAPi';
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Alert from './Alert';
 
 const SignUpGoogle = () => {
 
@@ -22,34 +22,17 @@ const SignUpGoogle = () => {
             role: 'user',
             from: 'google'
         }
-        try{
-            // await axios.post(apiurl+'/auth/signup', data)
-            let {data, error} = await signUp(dataFromGoogle)
+
+        let {data, error} = await signUp(dataFromGoogle)
         if(error){
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${error.data.response.details[0].message}`
-              })
+            Alert('error', error.data.message)
         } else if (!data.success) {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${data.message} with that email`
-              })
+            Alert('error', data.message)
         }
         else {
-            await Swal.fire({
-                icon: 'success',
-                title: `Welcome to mytineraries ${data.response.name} !`,
-                text: `Now you can sign in with your account.`
-              })
+            Alert('success', `Welcome to mytineraries ${data.response.name}`)
             Navigate("/");
         }
-        } catch(error){
-            console.log(error)
-        }
-        //newUser(data)
     }
 
     useEffect(()=>{

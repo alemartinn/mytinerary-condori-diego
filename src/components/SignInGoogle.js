@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../features/userSlice';
+import Alert from './Alert';
 
 const SignUpGoogle = () => {
 
@@ -26,11 +27,7 @@ const SignUpGoogle = () => {
         try{
             const {data, error} = signIn(dataFromGoogle);
             if(error){
-                await Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: `${error.data.message}`
-                  });
+                Alert("error",error.data.message)
             } else {
                 dispatch(addUser(data.response.user));
                 localStorage.setItem("token", (data.response.token));
