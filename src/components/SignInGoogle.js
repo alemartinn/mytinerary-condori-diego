@@ -3,9 +3,12 @@ import * as jose from 'jose';
 import { useSignInMutation } from '../features/authAPi';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../features/userSlice';
 
 const SignUpGoogle = () => {
 
+    const dispatch = useDispatch();
     const Navigate = useNavigate();
     const buttonDiv = useRef(null);
     const [signIn] = useSignInMutation();
@@ -18,7 +21,7 @@ const SignUpGoogle = () => {
             email: userObject.email,
             password: userObject.sub,
             from: 'google'
-        }
+        };
         
         try{
             const {data, error} = signIn(dataFromGoogle);
@@ -29,7 +32,7 @@ const SignUpGoogle = () => {
                     text: `${error.data.message}`
                   });
             } else {
-                localStorage.setItem("client", JSON.stringify(data.response.user));
+                dispatch(addUser(data.response.user));
                 localStorage.setItem("token", (data.response.token));
                 await Swal.fire({
                     icon: 'success',
@@ -43,7 +46,7 @@ const SignUpGoogle = () => {
             console.log(error)
         }
         //newUser(data)
-    }
+    };
 
     useEffect(()=>{
         /* global google */
@@ -56,7 +59,7 @@ const SignUpGoogle = () => {
         { theme: "outline", size: "medium" }  // customization attributes
         );
         //google.accounts.id.prompt();
-    },[])
+    },[]);
 
     return (  
         <div>
