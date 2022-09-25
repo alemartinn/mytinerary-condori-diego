@@ -1,27 +1,33 @@
 import FormSignUp from '../components/FormSignUp';
 import SignUpGoogle from '../components/SignUpGoogle';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const SignUp = () => {
-    let client = localStorage.getItem("client")
-    let userLocal = JSON.parse(client)
-
-    let roleLocal = ""
-
-    if(userLocal && userLocal.role === "admin") {
-        roleLocal = "admin"
-    } else {
-        roleLocal = "user"
-    }
+    
+    const userRedux = useSelector(state => state.user.u);
 
     return (  
-        <div className='SignUp-container'>
-            <FormSignUp role={roleLocal}/>
-            {roleLocal === "user"?
-                <SignUpGoogle/>
-            :
-            null
+        <>
+            {
+                userRedux
+                ?
+                (
+                    userRedux.role === "admin" 
+                    ?
+                    <div className='SignUp-container'>
+                        <FormSignUp role={userRedux.role}/>
+                    </div>
+                    :
+                    <Navigate to="/"/>
+                )
+                :
+                <div className='SignUp-container'>
+                    <FormSignUp role={"user"}/>
+                    <SignUpGoogle/>
+                </div>
             }
-        </div>
+        </>
     );
 }
  

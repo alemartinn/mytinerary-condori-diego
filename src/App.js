@@ -19,9 +19,21 @@ import RouteS1Logged from './privatesRoutes/RouteS1Logged';
 import RouteN1Logged from './privatesRoutes/RouteN1Logged';
 import PatchItineraries from './pages/PatchItineraries';
 import Profile from './pages/Profile';
+import { useVerifyTokenQuery } from './features/authAPi';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addUser } from './features/userSlice';
 
 function App() {
-  
+  /* It checks if there is an user logged after each refresh our app page */
+  const { data } = useVerifyTokenQuery(localStorage.getItem("token"));
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    if (data){
+      dispatch(addUser(data.response));
+    }
+  }, [data, dispatch])
+
   return (
     <>
       <ScrollToTop />

@@ -41,8 +41,15 @@ export const authAPI = createApi({
                 method: 'PATCH',
                 headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
             })
+        }),
+        verifyToken: builder.query({
+            query: (token) => ({
+                url: `/auth/verifytoken`,
+                method: 'GET',
+                headers: {Authorization: `Bearer ${token}`}
+            })
         })
     })
 });
 
-export const {useSignUpMutation, useSignInMutation, useSignOutMutation ,useUpdateUserMutation, useFavoritesMutation} = authAPI;
+export const {useSignUpMutation, useSignInMutation, useSignOutMutation ,useUpdateUserMutation, useVerifyTokenQuery, useFavoritesMutation} = authAPI;

@@ -1,27 +1,23 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import FormProfile from '../components/FormProfile';
+import { useSelector } from 'react-redux';
 import '../styles/Profile.css'
 
 const Profile = () => {
 
     const {id} = useParams();
-    
-    const clientLS = localStorage.getItem('client');
-    let client;
-    if (clientLS){
-        client = JSON.parse(clientLS);
-    }
+    const userRedux = useSelector(state => state.user.u);
 
     return (
         <>
             {
-                client.id === id 
+                userRedux.id === id 
                 ?
                 <FormProfile/>
                 :
                 <div className='Profile-container'>
-                    <h2>This isn't your profile.</h2>
+                    <h2>Stalker.</h2>
                 </div>
             }
         </>

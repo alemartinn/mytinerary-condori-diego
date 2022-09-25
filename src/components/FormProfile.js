@@ -2,21 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useUpdateUserMutation } from '../features/authAPi';
 import Alert from './Alert';
 import InputMod from './InputMod';
+import { useSelector, useDispatch } from 'react-redux';
+import { addUser } from '../features/userSlice';
 
 const FormProfile = () => {
 
-    const [userData, setUserData] = useState();
+    const dispatch = useDispatch();
+    const userRedux = useSelector(state => state.user.u);
     const [editUser, setEditUser] = useState();
     const [updateUser] = useUpdateUserMutation();
-
-    useEffect(()=>{
-        let dataLS = localStorage.getItem('client');
-        if (dataLS){
-            let data = JSON.parse(dataLS);
-            setUserData(data);
-        }
-    },[]);
-
 
     const [modelF, editModelF] = useState([
         {name: 'name', type: 'text', defaultValue: ''},
@@ -27,25 +21,25 @@ const FormProfile = () => {
     ]);
 
     useEffect(()=>{
-        if (userData){
+        if (userRedux){
             editModelF([
-                {name: 'name', type: 'text', defaultValue: userData.name},
-                {name: 'lastname', type: 'text', defaultValue: userData.lastName},
-                {name: 'photo', type: 'url', defaultValue: userData.photo},
-                {name: 'country', type: 'text', defaultValue: userData.country},
+                {name: 'name', type: 'text', defaultValue: userRedux.name},
+                {name: 'lastname', type: 'text', defaultValue: userRedux.lastName},
+                {name: 'photo', type: 'url', defaultValue: userRedux.photo},
+                {name: 'country', type: 'text', defaultValue: userRedux.country},
                 {name: 'password', type: 'password', defaultValue: ''}
             ]);
             setEditUser({
-                name: userData.name,
-                lastName: userData.lastName,
-                photo: userData.photo,
-                country: userData.country,
-                email: userData.email, 
-                role: userData.role, 
-                from: userData.from[0]
+                name: userRedux.name,
+                lastName: userRedux.lastName,
+                photo: userRedux.photo,
+                country: userRedux.country,
+                email: userRedux.email, 
+                role: userRedux.role, 
+                from: userRedux.from[0]
             });
         }
-    },[userData]);
+    },[userRedux]);
     
     const handleChange = e => {
         setEditUser({
@@ -62,6 +56,7 @@ const FormProfile = () => {
                 defaultValue = {elem.defaultValue}
                 required
                 onChange={handleChange}
+                autoComplete="on"
             />
             <label className='form__label' htmlFor={elem.name}>{elem.name}</label>
         </div>
@@ -69,14 +64,12 @@ const FormProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const {data, error} = await updateUser({editUser: editUser, idUser: userData.id});
+        const {data, error} = await updateUser({editUser: editUser, idUser: userRedux.id});
         if(error){
-            console.log(error.data.message)
-            Alert("error",error.data.message)
+            Alert("error",error.data.message);
         } else {
-            localStorage.removeItem("client");
-            localStorage.setItem("client", JSON.stringify(data.response));
-            // localStorage.setItem("token", JSON.stringify(data.response.token));
+            dispatch(addUser(data.response));
+            localStorage.setItem("token", JSON.stringify(data.response.token));
             Alert("success",data.message)
         }
     };

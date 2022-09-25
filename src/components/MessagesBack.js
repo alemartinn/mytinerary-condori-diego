@@ -1,5 +1,7 @@
 export default function MessagesBack(title) {
-    let messageBack = ''
+
+    let messageBack = '';
+    
     switch (title) {
         case 'NAME_TOO_SHORT': 
             messageBack = "Name is too short"
@@ -17,14 +19,14 @@ export default function MessagesBack(title) {
             messageBack = "Tags are required"
             break;
         case 'DURATION_REQUIRED':
-                messageBack = "Duration is required"
-                break;
+            messageBack = "Duration is required"
+            break;
         case 'INVALID_MIN_DURAT':
-                messageBack = "Minimum duration is invalid"
+            messageBack = "Minimum duration is invalid"
             break;
         case 'DURAT_TOO_MUCH':
-                messageBack = "Maximum duration is invalid"
-                break;
+            messageBack = "Maximum duration is invalid"
+            break;
         case 'DESCR_TOO_SHORT':
             messageBack = "Short description"
             break;

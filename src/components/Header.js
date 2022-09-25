@@ -4,13 +4,14 @@ import '../styles/Header.css'
 import NavBar from './Header/NavBar';
 import ButtonNavBar from './Header/ButtonNavBar';
 import UserMenu from './Header/UserMenu';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
     const [showNavMenu, setShowNavMenu] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
-    const client = localStorage.getItem("client");
-    const userLocal = JSON.parse(client);
+
+    const userRedux = useSelector(state => state.user.u);
 
     const clickShowNavMenu = () => {
         setShowNavMenu(!showNavMenu);
@@ -37,9 +38,9 @@ const Header = () => {
             <button className='HeaderButton' onClick={() => {closeMenuNav(); clickShowUserMenu()}}>
                 <div className="card-client">
                     <div className="user-picture">
-                    {localStorage.getItem('client') ?
+                    {userRedux ?
                         <>
-                        <img className="user-picture" src={userLocal.photo} alt='User'/>
+                        <img className="user-picture" src={userRedux.photo} alt='User'/>
                         </>
                         :
                         <svg viewBox="0 0 448 512" fill="white" height= "30"  xmlns="http://www.w3.org/2000/svg">

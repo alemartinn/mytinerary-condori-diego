@@ -2,19 +2,16 @@ import React from 'react';
 import SignInGoogle from '../components/SignInGoogle';
 import FormSignIn from '../components/FormSignIn';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const SignIn = () => {
 
-    let userLocal = JSON.parse(localStorage.getItem("client"));
-    let loggedInLocal;
-    if (userLocal){
-        loggedInLocal = userLocal.loggedIn;
-    }
+    const userRedux = useSelector(state => state.user.u);
 
     return (
         <>
             {
-                loggedInLocal 
+                userRedux 
                 ?
                 <Navigate to="/" replace="true"/>
                 :
